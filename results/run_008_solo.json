@@ -1,0 +1,53 @@
+{
+ "seed": 8,
+ "truth": "checkout_latency_android",
+ "wiring": "solo",
+ "answer": "checkout_latency_android",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 2878,
+ "output_tokens": 121,
+ "cost_usd": 0.00261,
+ "seconds": 3.2,
+ "headline": {
+  "baseline_conversion": 0.0683,
+  "last_week_conversion": 0.0618,
+  "relative_change_pct": -9.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "checkout_latency_android",
+  "confidence": 0.95,
+  "note": "Android checkout rate dropped 19.9% from 0.1126 to 0.0902 driving an overall conversion drop of 20.3% on Android, while iOS and web checkout rates remained flat at -0.2% and 0.0% delta respectively. Other funnel stages like attempt rate and success rate on Android stayed virtually unchanged at -0.3%",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 3.15,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=checkout_latency_android  conf 0.95",
+    "c": 0.00261
+   },
+   {
+    "t": 3.15,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 3.15,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=checkout_latency_android",
+    "c": 0.0
+   }
+  ]
+ }
+}

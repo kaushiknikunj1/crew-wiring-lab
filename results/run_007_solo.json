@@ -1,0 +1,53 @@
+{
+ "seed": 7,
+ "truth": "ios_release_bug",
+ "wiring": "solo",
+ "answer": "ios_release_bug",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 2875,
+ "output_tokens": 344,
+ "cost_usd": 0.00345,
+ "seconds": 6.0,
+ "headline": {
+  "baseline_conversion": 0.0682,
+  "last_week_conversion": 0.0621,
+  "relative_change_pct": -8.9
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "ios_release_bug",
+  "confidence": 0.99,
+  "note": "Checkout conversion dropped because iOS payment-attempt rate plummeted 32.6% from 0.7347 to 0.4949, driving iOS conversion down from 0.0856 to 0.0572. In contrast, attempt rates on Android and Web remained stable with changes of 0.0% and +0.5% respectively.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 6.03,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=ios_release_bug  conf 0.99",
+    "c": 0.00345
+   },
+   {
+    "t": 6.04,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 6.04,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=ios_release_bug",
+    "c": 0.0
+   }
+  ]
+ }
+}

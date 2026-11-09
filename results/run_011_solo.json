@@ -1,0 +1,53 @@
+{
+ "seed": 11,
+ "truth": "paid_traffic_mix",
+ "wiring": "solo",
+ "answer": "paid_traffic_mix",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 2901,
+ "output_tokens": 117,
+ "cost_usd": 0.00261,
+ "seconds": 2.9,
+ "headline": {
+  "baseline_conversion": 0.0682,
+  "last_week_conversion": 0.0575,
+  "relative_change_pct": -15.7
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "paid_traffic_mix",
+  "confidence": 0.99,
+  "note": "Paid sessions surged by 65.8% (from 12,197 to 20,224 sessions per day), driving a 38.0% drop in paid checkout rate from 0.0903 to 0.0560. In contrast, checkout rates for organic (-0.2% delta) and referral (-0.2% delta) remained virtually unchanged.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 2.94,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=paid_traffic_mix  conf 0.99",
+    "c": 0.00261
+   },
+   {
+    "t": 2.94,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 2.94,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=paid_traffic_mix",
+    "c": 0.0
+   }
+  ]
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "seed": 10,
+ "truth": "pricing_change",
+ "wiring": "solo",
+ "answer": "pricing_change",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 2891,
+ "output_tokens": 104,
+ "cost_usd": 0.00256,
+ "seconds": 3.1,
+ "headline": {
+  "baseline_conversion": 0.0684,
+  "last_week_conversion": 0.0606,
+  "relative_change_pct": -11.4
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "pricing_change",
+  "confidence": 0.98,
+  "note": "Checkout rate dropped uniformly by approximately 11% across all platforms, including Android (-11.2%), iOS (-11.0%), and Web (-11.0%), as well as all traffic sources. Downstream attempt rate (-0.2%) and success rate (-0.1%) remained steady, pointing directly to a top-of-funnel pricing change.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 3.07,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=pricing_change  conf 0.98",
+    "c": 0.00256
+   },
+   {
+    "t": 3.07,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 3.07,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=pricing_change",
+    "c": 0.0
+   }
+  ]
+ }
+}

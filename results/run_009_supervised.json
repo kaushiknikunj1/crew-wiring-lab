@@ -1,0 +1,214 @@
+{
+ "seed": 9,
+ "truth": "paid_traffic_mix",
+ "wiring": "supervised",
+ "answer": "paid_traffic_mix",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 4141,
+ "output_tokens": 1276,
+ "cost_usd": 0.00789,
+ "seconds": 34.3,
+ "headline": {
+  "baseline_conversion": 0.0684,
+  "last_week_conversion": 0.0573,
+  "relative_change_pct": -16.2
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "paid_traffic_mix",
+  "votes": {
+   "paid_traffic_mix": 0.98
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.45,
+    "note": "Checkout rate dropped similarly across Android (-16.3%), iOS (-15.5%), and Web (-15.6%) alongside a ~19% session surge, which could indicate either a"
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": "Checkout rate dropped by ~16% across all payment methods (upi -16.1%, card -15.7%, netbanking -15.9%, wallet -16.1%) with stable attempt and success rates, which cannot distinguish between traffic mix, pricing, or platform-specific upstream causes."
+   },
+   "scout3": {
+    "cause": "paid_traffic_mix",
+    "confidence": 0.98,
+    "note": "Paid sessions surged 64.7% while paid checkout rate plunged 38.2% (from 0.0903 to 0.0558), whereas organic and referral checkout rates remained virtually unchanged (-0.3% and +0.1%)."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.4,
+    "note": "Sessions rose 19.3% and checkout rate dropped 15.9% while attempt and success rates stayed flat, but without platform or traffic breakdowns the root cause cannot be distinguished."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "Blended conversion dropped from ~0.0687 on day 21 to 0.0576 on day 22 and remained around ~0.057 through day 28, but overall blended data cannot isolate platform, payment method, or traffic source."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "Blended conversion dropped 16.2% from 0.0684 to 0.0573, but headline aggregate data alone cannot distinguish between the potential underlying drivers."
+   }
+  },
+  "retries": 0,
+  "text": "Conversion fell last week because of a shift in the paid traffic mix. As a result, the conversion rate dropped from a baseline of 0.0684 to 0.0573, representing a relative decline of -16.2 percent.",
+  "trace": [
+   {
+    "t": 0.01,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.01,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.01,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.01,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  by platform",
+    "c": 0.0
+   },
+   {
+    "t": 0.01,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  by payment method",
+    "c": 0.0
+   },
+   {
+    "t": 0.01,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  by traffic source",
+    "c": 0.0
+   },
+   {
+    "t": 0.01,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  overall funnel steps",
+    "c": 0.0
+   },
+   {
+    "t": 0.01,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  daily blended conversion",
+    "c": 0.0
+   },
+   {
+    "t": 0.01,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  headline",
+    "c": 0.0
+   },
+   {
+    "t": 9.65,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.45",
+    "c": 0.00216
+   },
+   {
+    "t": 14.03,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.00107
+   },
+   {
+    "t": 19.34,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=paid_traffic_mix  conf 0.98",
+    "c": 0.00153
+   },
+   {
+    "t": 23.04,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.40",
+    "c": 0.00102
+   },
+   {
+    "t": 26.64,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.00086
+   },
+   {
+    "t": 30.7,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00095
+   },
+   {
+    "t": 30.7,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 30.7,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 30.7,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = paid_traffic_mix  weights {\"paid_traffic_mix\": 0.98}",
+    "c": 0.0
+   },
+   {
+    "t": 30.7,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 34.31,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=paid_traffic_mix",
+    "c": 0.00029
+   },
+   {
+    "t": 34.31,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 34.31,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=paid_traffic_mix",
+    "c": 0.0
+   }
+  ]
+ }
+}

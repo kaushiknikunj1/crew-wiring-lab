@@ -1,0 +1,214 @@
+{
+ "seed": 2,
+ "truth": "card_bin_block",
+ "wiring": "supervised",
+ "answer": "card_bin_block",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 4063,
+ "output_tokens": 1046,
+ "cost_usd": 0.00697,
+ "seconds": 26.6,
+ "headline": {
+  "baseline_conversion": 0.0683,
+  "last_week_conversion": 0.0618,
+  "relative_change_pct": -9.5
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "card_bin_block",
+  "votes": {
+   "card_bin_block": 0.95
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.4,
+    "note": "Payment success rate fell uniformly across Android (-9.5%), iOS (-9.2%), and web (-9.4%), pointing to a payment issue, but this slice cannot distinguish between UPI gateway outage and card BIN block."
+   },
+   "scout2": {
+    "cause": "card_bin_block",
+    "confidence": 0.95,
+    "note": "Card payment success rate dropped sharply by 36.3% from 0.8361 to 0.5322, while success rates for UPI, netbanking, and wallet remained virtually unchanged."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.4,
+    "note": "Payment success rate fell by ~9.5% across all traffic sources (organic down 9.4%, paid down 9.5%, referral down 9.5%) while other rates remained flat, indicating a payment-stage issue that cannot be distinguished between UPI or card causes without payment method data."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.4,
+    "note": "Payment success rate fell 9.4% (0.8715 to 0.7893) while checkout and attempt rates remained flat, but this slice lacks payment method breakdown to distinguish UPI from card issues."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "Daily blended conversion dropped noticeably from ~0.0680 on day 21 to ~0.0614-0.0624 from day 22 onwards, but overall blended data cannot isolate platform, payment method, or traffic source causes."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "Overall conversion dropped 9.5% from 0.0683 to 0.0618, but the headline slice lacks segment breakdowns to isolate the root cause."
+   }
+  },
+  "retries": 0,
+  "text": "Conversion fell last week because of a card BIN block that prevented transactions from going through. This caused the conversion rate to drop from the baseline of 0.0683 to 0.0618, representing a -9.5% relative change.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  by platform",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  by payment method",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  by traffic source",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  overall funnel steps",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  daily blended conversion",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  headline",
+    "c": 0.0
+   },
+   {
+    "t": 4.89,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.40",
+    "c": 0.00128
+   },
+   {
+    "t": 7.1,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=card_bin_block  conf 0.95",
+    "c": 0.001
+   },
+   {
+    "t": 11.58,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.40",
+    "c": 0.00164
+   },
+   {
+    "t": 15.55,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.40",
+    "c": 0.0011
+   },
+   {
+    "t": 19.2,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.00082
+   },
+   {
+    "t": 23.54,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00084
+   },
+   {
+    "t": 23.54,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 23.54,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 23.54,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = card_bin_block  weights {\"card_bin_block\": 0.95}",
+    "c": 0.0
+   },
+   {
+    "t": 23.54,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 26.64,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=card_bin_block",
+    "c": 0.00029
+   },
+   {
+    "t": 26.64,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 26.64,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=card_bin_block",
+    "c": 0.0
+   }
+  ]
+ }
+}

@@ -1,0 +1,44 @@
+# First full pass, before the paid_traffic_mix label fix (see README)
+provider=gemini model=gemini-3.8-flash thinking=0
+seed   1  solo       truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 1 $0.0026 4.3s
+seed   1  flat       truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 7 $0.0084 56.4s
+seed   1  supervised truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 7 $0.0073 29.4s
+seed   2  solo       truth=card_bin_block             answer=card_bin_block             OK  calls= 1 $0.0025 2.1s
+seed   2  flat       truth=card_bin_block             answer=card_bin_block             OK  calls= 7 $0.0070 24.2s
+seed   2  supervised truth=card_bin_block             answer=card_bin_block             OK  calls= 7 $0.0070 26.6s
+seed   3  solo       truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 1 $0.0026 4.1s
+seed   3  flat       truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 7 $0.0084 27.2s
+seed   3  supervised truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 7 $0.0087 29.8s
+seed   4  solo       truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 1 $0.0026 4.3s
+seed   4  flat       truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 7 $0.0075 25.6s
+seed   4  supervised truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 7 $0.0085 28.5s
+seed   5  solo       truth=pricing_change             answer=pricing_change             OK  calls= 1 $0.0028 3.8s
+seed   5  flat       truth=pricing_change             answer=pricing_change             OK  calls= 7 $0.0075 26.0s
+seed   5  supervised truth=pricing_change             answer=pricing_change             OK  calls= 7 $0.0076 29.9s
+seed   6  solo       truth=pricing_change             answer=pricing_change             OK  calls= 1 $0.0026 3.5s
+seed   6  flat       truth=pricing_change             answer=pricing_change             OK  calls= 7 $0.0055 19.5s
+seed   6  supervised truth=pricing_change             answer=pricing_change             OK  calls= 7 $0.0092 31.7s
+seed   7  solo       truth=ios_release_bug            answer=ios_release_bug            OK  calls= 1 $0.0034 6.0s
+seed   7  flat       truth=ios_release_bug            answer=ios_release_bug            OK  calls= 7 $0.0078 29.1s
+seed   7  supervised truth=ios_release_bug            answer=ios_release_bug            OK  calls= 7 $0.0090 31.8s
+seed   8  solo       truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 1 $0.0026 3.2s
+seed   8  flat       truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 7 $0.0093 28.1s
+seed   8  supervised truth=checkout_latency_android   answer=checkout_latency_android   OK  calls= 7 $0.0089 28.4s
+seed   9  solo       truth=paid_traffic_mix           answer=unclear                    MISS calls= 1 $0.0027 3.2s
+seed   9  flat       truth=paid_traffic_mix           answer=pricing_change             MISS calls= 7 $0.0078 25.2s
+seed   9  supervised truth=paid_traffic_mix           answer=pricing_change             MISS calls= 7 $0.0075 27.0s
+seed  10  solo       truth=pricing_change             answer=pricing_change             OK  calls= 1 $0.0026 3.1s
+seed  10  flat       truth=pricing_change             answer=pricing_change             OK  calls= 7 $0.0063 21.9s
+seed  10  supervised truth=pricing_change             answer=pricing_change             OK  calls= 8 $0.0088 30.7s
+seed  11  solo       truth=paid_traffic_mix           answer=unclear                    MISS calls= 1 $0.0027 5.2s
+seed  11  flat       truth=paid_traffic_mix           answer=pricing_change             MISS calls= 7 $0.0095 29.0s
+seed  11  supervised truth=paid_traffic_mix           answer=paid_traffic_mix           OK  calls= 7 $0.0072 36.7s
+seed  12  solo       truth=paid_traffic_mix           answer=unclear                    MISS calls= 1 $0.0027 3.4s
+seed  12  flat       truth=paid_traffic_mix           answer=pricing_change             MISS calls= 7 $0.0080 26.2s
+seed  12  supervised truth=paid_traffic_mix           answer=pricing_change             MISS calls= 7 $0.0087 30.3s
+| wiring | runs | accuracy | calls/run | tokens/run | $/run | s/run |
+|---|---|---|---|---|---|---|
+| solo | 12 | 75% | 1 | 3029 | 0.0027 | 3.9 |
+| flat | 12 | 75% | 7 | 5971 | 0.0077 | 28.2 |
+| supervised | 12 | 83% | 7.1 | 5499 | 0.0082 | 30.1 |
+Total: 181 calls, 142871 in / 11918 out / 19201 thinking tokens, $0.2238 on gemini-3.8-flash (thinking budget 0).

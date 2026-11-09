@@ -1,0 +1,53 @@
+{
+ "seed": 6,
+ "truth": "pricing_change",
+ "wiring": "solo",
+ "answer": "pricing_change",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 2894,
+ "output_tokens": 123,
+ "cost_usd": 0.00263,
+ "seconds": 3.5,
+ "headline": {
+  "baseline_conversion": 0.0681,
+  "last_week_conversion": 0.0608,
+  "relative_change_pct": -10.7
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "pricing_change",
+  "confidence": 0.98,
+  "note": "Checkout-start rate dropped uniformly across all platforms (-11.2% on Android, -10.9% on iOS, -11.3% on web) and traffic sources (-11.1% on organic, -10.9% on paid, -11.5% on referral). Meanwhile, downstream attempt rate (+0.1%) and success rate (+0.3%) remained completely stable.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 3.49,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=pricing_change  conf 0.98",
+    "c": 0.00263
+   },
+   {
+    "t": 3.49,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 3.49,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=pricing_change",
+    "c": 0.0
+   }
+  ]
+ }
+}

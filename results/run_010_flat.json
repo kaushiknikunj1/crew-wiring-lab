@@ -1,0 +1,248 @@
+{
+ "seed": 10,
+ "truth": "pricing_change",
+ "wiring": "flat",
+ "answer": "pricing_change",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 4969,
+ "output_tokens": 687,
+ "cost_usd": 0.0063,
+ "seconds": 21.9,
+ "headline": {
+  "baseline_conversion": 0.0684,
+  "last_week_conversion": 0.0606,
+  "relative_change_pct": -11.4
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "pricing_change",
+  "votes": {
+   "pricing_change": 4.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "pricing_change",
+    "confidence": 0.95,
+    "note": "Checkout rate dropped uniformly across all platforms by ~11% (Android -11.2%, iOS -11.0%, Web -11.0%) while attempt and success rates remained flat."
+   },
+   "scout2": {
+    "cause": "pricing_change",
+    "confidence": 0.9,
+    "note": "Checkout rate fell uniformly across all payment methods by ~11% (UPI -11.2%, card -10.9%, netbanking -11.1%, wallet -11.0%) while attempt and success rates remained flat."
+   },
+   "scout3": {
+    "cause": "pricing_change",
+    "confidence": 0.95,
+    "note": "Checkout rate dropped across all traffic sources by roughly 11% (organic -10.8%, paid -11.5%, referral -11.3%) while attempt and success rates remained flat."
+   },
+   "scout4": {
+    "cause": "pricing_change",
+    "confidence": 0.9,
+    "note": "Overall checkout rate fell by 11.1% from 0.1108 to 0.0985 while attempt and success rates remained essentially flat (-0.2% and -0.1%)."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "Blended conversion dropped from ~0.0684 across days 1-21 to ~0.0606 on days 22-28, but aggregate daily conversion alone cannot distinguish the underlying cause."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "Headline conversion fell by 11.4% from 0.0684 to 0.0606 last week, but aggregate numbers alone cannot distinguish the underlying cause."
+   }
+  },
+  "text": "Conversion fell last week due to a pricing change. This adjustment caused the conversion rate to drop from the baseline of 0.0684 to 0.0606, representing an 11.4% decline.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  by platform",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  by payment method",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  by traffic source",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  overall funnel steps",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  daily blended conversion",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  headline",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 2.62,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=pricing_change  conf 0.95",
+    "c": 0.00084
+   },
+   {
+    "t": 2.62,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 5.06,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=pricing_change  conf 0.90",
+    "c": 0.00108
+   },
+   {
+    "t": 5.06,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 7.49,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=pricing_change  conf 0.95",
+    "c": 0.00096
+   },
+   {
+    "t": 7.49,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 10.08,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=pricing_change  conf 0.90",
+    "c": 0.00072
+   },
+   {
+    "t": 10.08,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 16.95,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=unclear  conf 0.20",
+    "c": 0.0018
+   },
+   {
+    "t": 16.95,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 19.61,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=unclear  conf 0.20",
+    "c": 0.00065
+   },
+   {
+    "t": 19.61,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"pricing_change\": 4.0}",
+    "c": 0.0
+   },
+   {
+    "t": 19.61,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = pricing_change",
+    "c": 0.0
+   },
+   {
+    "t": 19.61,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 21.9,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=pricing_change",
+    "c": 0.00026
+   },
+   {
+    "t": 21.9,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 21.9,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=pricing_change",
+    "c": 0.0
+   }
+  ]
+ }
+}

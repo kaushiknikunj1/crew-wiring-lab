@@ -1,0 +1,248 @@
+{
+ "seed": 11,
+ "truth": "paid_traffic_mix",
+ "wiring": "flat",
+ "answer": "paid_traffic_mix",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 4677,
+ "output_tokens": 2090,
+ "cost_usd": 0.01135,
+ "seconds": 38.2,
+ "headline": {
+  "baseline_conversion": 0.0682,
+  "last_week_conversion": 0.0575,
+  "relative_change_pct": -15.7
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "paid_traffic_mix",
+  "votes": {
+   "paid_traffic_mix": 1.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "paid_traffic_mix",
+    "confidence": 0.95,
+    "note": "Paid sessions surged 65.8% while paid checkout rate dropped 38.0% (from 0.0903 to 0.0560), whereas organic and referral checkout rates remained virtually flat (-0.2%)."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.35,
+    "note": "Sessions rose 19.8% and checkout rate dropped 16.1% (0.1107 to 0.0929) with flat downstream rates, but this slice cannot distinguish between traffic mix, pricing, or Android latency."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": "Blended conversion dropped from ~0.068 to ~0.057 starting on day 22, but aggregate daily conversion cannot distinguish the underlying platform, traffic source, or payment issue."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": "Blended conversion fell 15.7% from 0.0682 to 0.0575, confirming the decline but lacking dimensional breakdown to identify the cause."
+   }
+  },
+  "text": "Conversion fell last week due to a change in the paid traffic mix",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  by platform",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  by payment method",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  by traffic source",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  overall funnel steps",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  daily blended conversion",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  headline",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 6.06,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=unclear  conf 0.30",
+    "c": 0.00217
+   },
+   {
+    "t": 6.06,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 12.83,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=unclear  conf 0.30",
+    "c": 0.00233
+   },
+   {
+    "t": 12.83,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 17.34,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=paid_traffic_mix  conf 0.95",
+    "c": 0.00146
+   },
+   {
+    "t": 17.34,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 22.92,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=unclear  conf 0.35",
+    "c": 0.00177
+   },
+   {
+    "t": 22.92,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 28.2,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=unclear  conf 0.30",
+    "c": 0.00116
+   },
+   {
+    "t": 28.2,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 32.92,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=unclear  conf 0.30",
+    "c": 0.00119
+   },
+   {
+    "t": 32.92,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"paid_traffic_mix\": 1.0}",
+    "c": 0.0
+   },
+   {
+    "t": 32.92,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = paid_traffic_mix",
+    "c": 0.0
+   },
+   {
+    "t": 32.92,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 38.22,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=paid_traffic_mix",
+    "c": 0.00127
+   },
+   {
+    "t": 38.22,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 38.22,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=paid_traffic_mix",
+    "c": 0.0
+   }
+  ]
+ }
+}

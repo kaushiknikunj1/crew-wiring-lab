@@ -1,0 +1,248 @@
+{
+ "seed": 2,
+ "truth": "card_bin_block",
+ "wiring": "flat",
+ "answer": "card_bin_block",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 4896,
+ "output_tokens": 881,
+ "cost_usd": 0.00698,
+ "seconds": 24.2,
+ "headline": {
+  "baseline_conversion": 0.0683,
+  "last_week_conversion": 0.0618,
+  "relative_change_pct": -9.5
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "card_bin_block",
+  "votes": {
+   "card_bin_block": 2.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": "Payment success rate fell uniformly across Android (-9.5%), iOS (-9.2%), and web (-9.4%), pointing to a payment-level failure that this platform slice cannot uniquely identify."
+   },
+   "scout2": {
+    "cause": "card_bin_block",
+    "confidence": 0.95,
+    "note": "Card payment success rate fell by 36.3% (from 83.61% to 53.22%) while success rates for UPI, netbanking, and wallet remained virtually unchanged."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.4,
+    "note": "Payment success rate fell uniformly across organic (-9.4%), paid (-9.5%), and referral (-9.5%) while checkout and attempt rates were flat, pointing to a payment issue that this slice cannot distinguish."
+   },
+   "scout4": {
+    "cause": "card_bin_block",
+    "confidence": 0.85,
+    "note": "Overall funnel shows payment success rate dropped by 9.4% (from 87.15% to 78.93%) driving the conversion decline, aligning with scout2's card-specific failure findings."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "Daily conversion dropped sharply around day 22 from ~6.8% to ~6.1%, but this aggregate view cannot distinguish the underlying driver."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "Headline conversion fell by 9.5% relative (from 6.83% to 6.18%), but this top-level metric cannot distinguish the underlying driver across platforms or payment methods."
+   }
+  },
+  "text": "Conversion fell last week because of a card BIN block. This drove a relative drop of -9.5%, bringing conversion down from the baseline of 0.0683 to 0.0618.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  by platform",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  by payment method",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  by traffic source",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  overall funnel steps",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  daily blended conversion",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  headline",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 4.77,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=unclear  conf 0.30",
+    "c": 0.00159
+   },
+   {
+    "t": 4.77,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 8.02,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=card_bin_block  conf 0.95",
+    "c": 0.00106
+   },
+   {
+    "t": 8.02,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 13.47,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=unclear  conf 0.40",
+    "c": 0.00184
+   },
+   {
+    "t": 13.47,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 15.98,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=card_bin_block  conf 0.85",
+    "c": 0.00072
+   },
+   {
+    "t": 15.98,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 18.1,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=unclear  conf 0.20",
+    "c": 0.00089
+   },
+   {
+    "t": 18.1,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 21.77,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=unclear  conf 0.20",
+    "c": 0.00062
+   },
+   {
+    "t": 21.77,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"card_bin_block\": 2.0}",
+    "c": 0.0
+   },
+   {
+    "t": 21.77,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = card_bin_block",
+    "c": 0.0
+   },
+   {
+    "t": 21.77,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 24.17,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=card_bin_block",
+    "c": 0.00025
+   },
+   {
+    "t": 24.17,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 24.17,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=card_bin_block",
+    "c": 0.0
+   }
+  ]
+ }
+}

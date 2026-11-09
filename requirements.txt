@@ -1,0 +1,2 @@
+# stdlib only. The optional Anthropic fallback in llm.py needs:
+# anthropic

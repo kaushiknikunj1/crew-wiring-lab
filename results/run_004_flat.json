@@ -1,0 +1,248 @@
+{
+ "seed": 4,
+ "truth": "checkout_latency_android",
+ "wiring": "flat",
+ "answer": "checkout_latency_android",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 4835,
+ "output_tokens": 1031,
+ "cost_usd": 0.00749,
+ "seconds": 25.6,
+ "headline": {
+  "baseline_conversion": 0.0682,
+  "last_week_conversion": 0.0618,
+  "relative_change_pct": -9.4
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "checkout_latency_android",
+  "votes": {
+   "checkout_latency_android": 3.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "checkout_latency_android",
+    "confidence": 0.95,
+    "note": "Android checkout rate fell by 19.9% from 0.1124 to 0.0900, while iOS and web checkout rates remained flat (delta_pct +0.1% and +0.4%)."
+   },
+   "scout2": {
+    "cause": "checkout_latency_android",
+    "confidence": 0.75,
+    "note": "Checkout rate dropped uniformly across all payment methods by ~8.9% to 9.6% while attempt and success rates remained flat, consistent with an upstream drop in checkout starts rather than payment-specific issues."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "checkout_latency_android",
+    "confidence": 0.7,
+    "note": "Overall checkout rate dropped 9.1% from 0.1106 to 0.1005 while attempt rate (-0.0%) and success rate (-0.3%) were essentially flat, consistent with a checkout-start issue."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "Blended conversion fell sharply around day 22 from ~0.0683 prior down to ~0.0617, but overall conversion data alone cannot isolate the underlying segment or cause."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.15,
+    "note": "Headline conversion dropped 9.4% from 0.0682 to 0.0618, but this top-level metric cannot distinguish the underlying driver across platforms or funnels."
+   }
+  },
+  "text": "Conversion fell last week because of checkout latency on Android devices. This issue caused conversion to drop from a baseline of 0.0682 to 0.0618, representing a relative change of -9.4 percent.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  by platform",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  by payment method",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  by traffic source",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  overall funnel steps",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  daily blended conversion",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  headline",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 3.64,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=checkout_latency_android  conf 0.95",
+    "c": 0.00134
+   },
+   {
+    "t": 3.64,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 6.0,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=checkout_latency_android  conf 0.75",
+    "c": 0.00105
+   },
+   {
+    "t": 6.0,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 12.04,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=unclear  conf 0.00",
+    "c": 0.00225
+   },
+   {
+    "t": 12.04,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 15.11,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=checkout_latency_android  conf 0.70",
+    "c": 0.00072
+   },
+   {
+    "t": 15.11,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 20.03,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=unclear  conf 0.20",
+    "c": 0.00124
+   },
+   {
+    "t": 20.03,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 22.78,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=unclear  conf 0.15",
+    "c": 0.00063
+   },
+   {
+    "t": 22.78,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"checkout_latency_android\": 3.0}",
+    "c": 0.0
+   },
+   {
+    "t": 22.78,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = checkout_latency_android",
+    "c": 0.0
+   },
+   {
+    "t": 22.78,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 25.56,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=checkout_latency_android",
+    "c": 0.00027
+   },
+   {
+    "t": 25.56,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 25.56,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=checkout_latency_android",
+    "c": 0.0
+   }
+  ]
+ }
+}

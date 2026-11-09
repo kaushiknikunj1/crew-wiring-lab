@@ -1,0 +1,53 @@
+{
+ "seed": 2,
+ "truth": "card_bin_block",
+ "wiring": "solo",
+ "answer": "card_bin_block",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 2873,
+ "output_tokens": 103,
+ "cost_usd": 0.00254,
+ "seconds": 2.1,
+ "headline": {
+  "baseline_conversion": 0.0683,
+  "last_week_conversion": 0.0618,
+  "relative_change_pct": -9.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "card_bin_block",
+  "confidence": 0.98,
+  "note": "Card payment success rate plunged 36.3% from 0.8361 to 0.5322, dropping card conversion from 0.0656 to 0.0415. Other payment methods like UPI and netbanking remained stable at 0.9052 and 0.7764 success rates, respectively.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 2.15,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=card_bin_block  conf 0.98",
+    "c": 0.00254
+   },
+   {
+    "t": 2.15,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 2.15,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=card_bin_block",
+    "c": 0.0
+   }
+  ]
+ }
+}

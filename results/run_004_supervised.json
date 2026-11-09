@@ -1,0 +1,215 @@
+{
+ "seed": 4,
+ "truth": "checkout_latency_android",
+ "wiring": "supervised",
+ "answer": "checkout_latency_android",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 4075,
+ "output_tokens": 1451,
+ "cost_usd": 0.0085,
+ "seconds": 28.5,
+ "headline": {
+  "baseline_conversion": 0.0682,
+  "last_week_conversion": 0.0618,
+  "relative_change_pct": -9.4
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "checkout_latency_android",
+  "votes": {
+   "checkout_latency_android": 0.95,
+   "pricing_change": 0.75
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "checkout_latency_android",
+    "confidence": 0.95,
+    "note": "Android checkout-start rate fell 19.9% from 0.1124 to 0.0900 while iOS and Web checkout rates remained flat."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.4,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "pricing_change",
+    "confidence": 0.75,
+    "note": "Checkout rate dropped uniformly across organic (-9.0%), paid (-9.3%), and referral (-9.4%) sources while attempt and success rates stayed essentially flat."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.4,
+    "note": "Checkout rate dropped 9.1% from 0.1106 to 0.1005 while downstream funnel steps held steady, but platform breakdowns are needed to distinguish between pricing_change and checkout_latency_android."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "Blended conversion dropped from ~0.0688 on day 21 to ~0.0618 on day 22 and remained around 0.061-0.063 through day 28, but overall daily conversion alone cannot distinguish the underlying segment-level cause."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "Overall conversion dropped 9.4% from 0.0682 to 0.0618, but aggregate headline data alone cannot distinguish between the potential causes."
+   }
+  },
+  "retries": 0,
+  "text": "Conversion fell by 9.4% last week, dropping from a baseline of 0.0682 to 0.0618. This decline was caused by checkout latency on Android devices.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  by platform",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  by payment method",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  by traffic source",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  overall funnel steps",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  daily blended conversion",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  headline",
+    "c": 0.0
+   },
+   {
+    "t": 3.16,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=checkout_latency_android  conf 0.95",
+    "c": 0.00128
+   },
+   {
+    "t": 8.19,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.40",
+    "c": 0.0023
+   },
+   {
+    "t": 13.06,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=pricing_change  conf 0.75",
+    "c": 0.00147
+   },
+   {
+    "t": 16.54,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.40",
+    "c": 0.00108
+   },
+   {
+    "t": 20.66,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.00109
+   },
+   {
+    "t": 24.9,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00103
+   },
+   {
+    "t": 24.9,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 24.9,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 24.9,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = checkout_latency_android  weights {\"checkout_latency_android\": 0.95, \"pricing_change\": 0.75}",
+    "c": 0.0
+   },
+   {
+    "t": 24.9,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 28.45,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=checkout_latency_android",
+    "c": 0.00026
+   },
+   {
+    "t": 28.45,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 28.45,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=checkout_latency_android",
+    "c": 0.0
+   }
+  ]
+ }
+}
