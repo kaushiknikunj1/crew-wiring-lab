@@ -57,7 +57,7 @@ def compress(trace: list[dict], truth: str, answer: str, calls: int) -> list[dic
     ev = [dict(t=round(0.12 * (i + 1), 2), a=n, b="bus", s=f"bus.attach  {n.replace(' ', '_')}  ctx=shared", c=0.0) for i, n in enumerate(inputs)]
     t0 = 0.12 * len(inputs) + 0.3
     real_end = max(e["t"] for e in trace) or 1.0
-    scale = (REPLAY_SECONDS - t0) / real_end
+    scale = min((REPLAY_SECONDS - t0) / real_end, 1.5)   # long runs squeeze to ~16 s; a 4 s solo run stays short, so the replay keeps the wall-time gap
     last = t0 - 0.2
     for e in trace:
         t = max(t0 + e["t"] * scale, last + 0.18)
