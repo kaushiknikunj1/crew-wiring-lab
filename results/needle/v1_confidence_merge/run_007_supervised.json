@@ -1,0 +1,214 @@
+{
+ "seed": 7,
+ "truth": "south/ios/upi",
+ "wiring": "supervised",
+ "answer": "south/ios/upi",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 10838,
+ "output_tokens": 1563,
+ "cost_usd": 0.01399,
+ "seconds": 9.0,
+ "headline": {
+  "baseline_conversion": 0.0984,
+  "last_week_conversion": 0.0979,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "south/ios/upi",
+  "votes": {
+   "south/ios/upi": 0.95
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "south/ios/upi",
+    "confidence": 0.95,
+    "note": "south/ios/upi saw its success_rate collapse from 0.8949 to 0.4922, representing an absolute drop of ~0.40 and a relative fall of ~45%."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice experienced a collapse in payment success rate; the largest decrease was minor (central/android/emi fell from 0.7210 to 0.7138)."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice experienced a collapse in success rate; the largest decrease was mumbai/mweb/upi drifting from 0.8833 to 0.8751."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show very stable payment success rates with no collapse observed (maximum relative drop is under 1% across hyderabad and pune segments)."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   }
+  },
+  "retries": 0,
+  "text": "The primary cause behind the drop in blended checkout conversion from 0.0984 to 0.0979 is the south iOS UPI segment. This single segment's collapsed payment success rate accounted for most of the overall -0.5 percent relative change.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 3.07,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=south/ios/upi  conf 0.95",
+    "c": 0.0016
+   },
+   {
+    "t": 5.66,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.01119
+   },
+   {
+    "t": 6.3,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.01367
+   },
+   {
+    "t": 6.3,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00541
+   },
+   {
+    "t": 6.3,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00314
+   },
+   {
+    "t": 6.3,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.00831
+   },
+   {
+    "t": 6.3,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 6.3,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 6.3,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = south/ios/upi  weights {\"south/ios/upi\": 0.95}",
+    "c": 0.0
+   },
+   {
+    "t": 6.3,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 9.03,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=south/ios/upi",
+    "c": 0.00032
+   },
+   {
+    "t": 9.03,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 9.03,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=south/ios/upi",
+    "c": 0.0
+   }
+  ]
+ }
+}

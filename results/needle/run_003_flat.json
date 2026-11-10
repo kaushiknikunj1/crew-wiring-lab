@@ -1,0 +1,248 @@
+{
+ "seed": 3,
+ "truth": "mumbai/web/netbanking",
+ "wiring": "flat",
+ "answer": "mumbai/web/netbanking",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 11491,
+ "output_tokens": 1457,
+ "cost_usd": 0.01408,
+ "seconds": 32.4,
+ "headline": {
+  "baseline_conversion": 0.0982,
+  "last_week_conversion": 0.0974,
+  "relative_change_pct": -0.8
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "mumbai/web/netbanking",
+  "votes": {
+   "mumbai/web/netbanking": 3.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice shows a collapse in success_rate; the largest drop is west/web/netbanking falling only from 0.7865 to 0.7790."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "No segment collapsed in this slice; the largest relative drop was central/web/upi falling from 0.8758 to 0.7810."
+   },
+   "scout4": {
+    "cause": "mumbai/web/netbanking",
+    "confidence": 0.99,
+    "note": "Payment success rate for mumbai/web/netbanking collapsed from 0.7572 to 0.4165 while checkout rate remained stable (0.1218 to 0.1219)."
+   },
+   "scout5": {
+    "cause": "mumbai/web/netbanking",
+    "confidence": 0.95,
+    "note": "No collapse in success_rate in segments 161-200 (largest drop was hyderabad/android/wallet from 0.9095 to 0.9023), confirming scout4's find of mumbai/web/netbanking dropping from 0.7572 to 0.4165."
+   },
+   "scout6": {
+    "cause": "mumbai/web/netbanking",
+    "confidence": 0.95,
+    "note": "In segments 201-240, the largest drop was chennai/mweb/emi from 0.7144 to 0.6470, confirming the true collapse is mumbai/web/netbanking reported by teammate scout4."
+   }
+  },
+  "text": "The collapse in blended checkout conversion was driven by the mumbai web netbanking segment. Overall conversion dropped from a baseline of 0.0982 to 0.0974 last week, representing a relative change of -0.8 percent.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  sequential  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 5.23,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=unclear  conf 0.30",
+    "c": 0.00288
+   },
+   {
+    "t": 5.23,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 9.74,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=unclear  conf 0.10",
+    "c": 0.00214
+   },
+   {
+    "t": 9.74,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 15.16,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=unclear  conf 0.20",
+    "c": 0.00264
+   },
+   {
+    "t": 15.16,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 19.56,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=mumbai/web/netbanking  conf 0.99",
+    "c": 0.00238
+   },
+   {
+    "t": 19.56,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 23.06,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=mumbai/web/netbanking  conf 0.95",
+    "c": 0.00188
+   },
+   {
+    "t": 23.06,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 27.9,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=mumbai/web/netbanking  conf 0.95",
+    "c": 0.00186
+   },
+   {
+    "t": 27.9,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"mumbai/web/netbanking\": 3.0}",
+    "c": 0.0
+   },
+   {
+    "t": 27.9,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = mumbai/web/netbanking",
+    "c": 0.0
+   },
+   {
+    "t": 27.9,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 32.37,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=mumbai/web/netbanking",
+    "c": 0.00031
+   },
+   {
+    "t": 32.37,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 32.37,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=mumbai/web/netbanking",
+    "c": 0.0
+   }
+  ]
+ }
+}

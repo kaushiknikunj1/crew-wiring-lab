@@ -1,0 +1,215 @@
+{
+ "seed": 1,
+ "truth": "ncr/mweb/netbanking/t3",
+ "wiring": "supervised",
+ "answer": "ncr/mweb/netbanking/t3",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 52297,
+ "output_tokens": 1379,
+ "cost_usd": 0.04439,
+ "seconds": 17.8,
+ "headline": {
+  "baseline_conversion": 0.0951,
+  "last_week_conversion": 0.0948,
+  "relative_change_pct": -0.4
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "ncr/mweb/netbanking/t3",
+  "votes": {
+   "east/web/wallet/t4": 0.123,
+   "ncr/mweb/netbanking/t3": 0.45
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout2": {
+    "cause": "east/web/wallet/t4",
+    "confidence": 0.95,
+    "note": "east/web/wallet/t4 experienced the largest relative drop in success rate in this slice, falling from 0.9277 to 0.8134 (-12.3%)."
+   },
+   "scout3": {
+    "cause": "ncr/mweb/netbanking/t3",
+    "confidence": 1.0,
+    "note": "Payment success rate for ncr/mweb/netbanking/t3 collapsed from 0.7789 to 0.4284 while all other segments in this slice remained virtually flat."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "The largest drops in success rate in this slice are bengaluru/ios/wallet/t5 (0.9173 to 0.8137, ~11.3%) and mumbai/android/wallet/t3 (0.9239 to 0.8277, ~10.4%), neither of which represents a full collapse."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "Several segments show moderate drops (e.g. hyderabad/web/upi/t2 fell from 0.888 to 0.7677, hyderabad/mweb/netbanking/t5 fell from 0.7766 to 0.6721), but none exhibit a catastrophic collapse."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   }
+  },
+  "retries": 0,
+  "text": "Blended checkout conversion fell from 0.0951 to 0.0948 last week, marking a 0.4 percent drop. The collapse was driven by the tier-three mobile web netbanking segment in NCR.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 15.32,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.04407
+   },
+   {
+    "t": 15.32,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=east/web/wallet/t4  conf 0.95",
+    "c": 0.03611
+   },
+   {
+    "t": 15.32,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=ncr/mweb/netbanking/t3  conf 1.00",
+    "c": 0.02132
+   },
+   {
+    "t": 15.32,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.0071
+   },
+   {
+    "t": 15.32,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.01401
+   },
+   {
+    "t": 15.32,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.02943
+   },
+   {
+    "t": 15.33,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 15.33,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 15.33,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       by evidence  top = ncr/mweb/netbanking/t3  {\"east/web/wallet/t4\": 0.123, \"ncr/mweb/netbanking/t3\": 0.45}",
+    "c": 0.0
+   },
+   {
+    "t": 15.33,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 17.83,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=ncr/mweb/netbanking/t3",
+    "c": 0.00032
+   },
+   {
+    "t": 17.83,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 17.83,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=ncr/mweb/netbanking/t3",
+    "c": 0.0
+   }
+  ]
+ }
+}

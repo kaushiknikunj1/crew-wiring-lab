@@ -1,0 +1,248 @@
+{
+ "seed": 12,
+ "truth": "chennai/ios/netbanking",
+ "wiring": "flat",
+ "answer": "chennai/ios/netbanking",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 11316,
+ "output_tokens": 2292,
+ "cost_usd": 0.01708,
+ "seconds": 33.7,
+ "headline": {
+  "baseline_conversion": 0.0964,
+  "last_week_conversion": 0.0959,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "chennai/ios/netbanking",
+  "votes": {
+   "chennai/ios/netbanking": 1.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice exhibits a collapsed payment success rate, with the largest decline being south/android/emi dropping slightly from 0.7175 to 0.7103."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice shows a collapse in payment success rate; the largest drop is mumbai/android/wallet dropping from 0.9336 to 0.9249."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice shows a collapse in payment success rate, with the largest drop being hyderabad/web/upi falling slightly from 0.8734 to 0.8660."
+   },
+   "scout6": {
+    "cause": "chennai/ios/netbanking",
+    "confidence": 0.99,
+    "note": "chennai/ios/netbanking suffered a major collapse in success_rate from 0.7996 down to 0.4398 (a 45% relative decline)."
+   }
+  },
+  "text": "Blended checkout conversion fell from 0.0",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  sequential  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 4.89,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=unclear  conf 0.10",
+    "c": 0.00285
+   },
+   {
+    "t": 4.89,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 10.76,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=unclear  conf 0.20",
+    "c": 0.00291
+   },
+   {
+    "t": 10.76,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 16.14,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=unclear  conf 0.00",
+    "c": 0.00293
+   },
+   {
+    "t": 16.14,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 20.86,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=unclear  conf 0.10",
+    "c": 0.00277
+   },
+   {
+    "t": 20.86,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 24.14,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=unclear  conf 0.10",
+    "c": 0.00203
+   },
+   {
+    "t": 24.14,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 28.26,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=chennai/ios/netbanking  conf 0.99",
+    "c": 0.00229
+   },
+   {
+    "t": 28.26,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"chennai/ios/netbanking\": 1.0}",
+    "c": 0.0
+   },
+   {
+    "t": 28.26,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = chennai/ios/netbanking",
+    "c": 0.0
+   },
+   {
+    "t": 28.26,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 33.65,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=chennai/ios/netbanking",
+    "c": 0.0013
+   },
+   {
+    "t": 33.65,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 33.65,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=chennai/ios/netbanking",
+    "c": 0.0
+   }
+  ]
+ }
+}

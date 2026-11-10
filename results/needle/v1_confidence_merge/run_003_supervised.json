@@ -1,0 +1,214 @@
+{
+ "seed": 3,
+ "truth": "mumbai/web/netbanking",
+ "wiring": "supervised",
+ "answer": "mumbai/web/netbanking",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 10839,
+ "output_tokens": 1790,
+ "cost_usd": 0.01484,
+ "seconds": 9.2,
+ "headline": {
+  "baseline_conversion": 0.0982,
+  "last_week_conversion": 0.0974,
+  "relative_change_pct": -0.8
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "mumbai/web/netbanking",
+  "votes": {
+   "mumbai/web/netbanking": 0.99
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice experienced a collapse in payment success rate; all success rates remained stable within approximately 1% of base."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show stable payment success rates with only minor drifts, none experiencing a collapse."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "mumbai/web/netbanking",
+    "confidence": 0.99,
+    "note": "mumbai/web/netbanking success_rate collapsed from 0.7572 to 0.4165 (a ~45% relative decline), while all other segments remained virtually unchanged."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show stable payment success rates within 1% of base, indicating the collapsing segment is outside this slice."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   }
+  },
+  "retries": 0,
+  "text": "Blended checkout conversion fell from 0.0982 to 0.0974, marking a relative change of -0.8 percent. The single segment responsible for most of the drop was netbanking transactions made via the web in Mumbai.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 5.33,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.01164
+   },
+   {
+    "t": 5.33,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00209
+   },
+   {
+    "t": 6.34,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.01453
+   },
+   {
+    "t": 6.34,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=mumbai/web/netbanking  conf 0.99",
+    "c": 0.00374
+   },
+   {
+    "t": 6.34,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00607
+   },
+   {
+    "t": 6.34,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.00897
+   },
+   {
+    "t": 6.34,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 6.34,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 6.34,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = mumbai/web/netbanking  weights {\"mumbai/web/netbanking\": 0.99}",
+    "c": 0.0
+   },
+   {
+    "t": 6.34,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 9.22,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=mumbai/web/netbanking",
+    "c": 0.00031
+   },
+   {
+    "t": 9.22,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 9.22,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=mumbai/web/netbanking",
+    "c": 0.0
+   }
+  ]
+ }
+}

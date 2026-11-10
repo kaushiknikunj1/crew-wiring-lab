@@ -1,0 +1,53 @@
+{
+ "seed": 10,
+ "truth": "east/web/wallet/t3",
+ "wiring": "solo",
+ "answer": "east/web/wallet/t3",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 51114,
+ "output_tokens": 91,
+ "cost_usd": 0.03868,
+ "seconds": 3.8,
+ "headline": {
+  "baseline_conversion": 0.0964,
+  "last_week_conversion": 0.0959,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "east/web/wallet/t3",
+  "confidence": 1.0,
+  "note": "The segment east/web/wallet/t3 experienced a severe drop in success_rate from 0.9343 to 0.5139, representing a relative collapse of over 45%. This isolated drop is significantly larger than any other segment drift in the dataset.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 3.78,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=east/web/wallet/t3  conf 1.00",
+    "c": 0.03868
+   },
+   {
+    "t": 3.82,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 3.82,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=east/web/wallet/t3",
+    "c": 0.0
+   }
+  ]
+ }
+}

@@ -1,0 +1,215 @@
+{
+ "seed": 1,
+ "truth": "west/ios/netbanking",
+ "wiring": "supervised",
+ "answer": "west/ios/netbanking",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 10833,
+ "output_tokens": 2155,
+ "cost_usd": 0.01621,
+ "seconds": 8.3,
+ "headline": {
+  "baseline_conversion": 0.0958,
+  "last_week_conversion": 0.0952,
+  "relative_change_pct": -0.6
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "west/ios/netbanking",
+  "votes": {
+   "west/ios/netbanking": 0.95,
+   "chennai/ios/card": 0.3
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "None of the segments in this slice show a collapse in success rate, with the largest drop being south/ios/card from 0.8612 to 0.8527."
+   },
+   "scout2": {
+    "cause": "west/ios/netbanking",
+    "confidence": 0.95,
+    "note": "Payment success rate for west/ios/netbanking collapsed by ~45% from 0.7984 to 0.4391, by far the largest drop in the slice."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show stable payment success rates with changes of less than 1 percentage point (e.g., hyderabad/ios/wallet moved from 0.9254 to 0.9166)."
+   },
+   "scout6": {
+    "cause": "chennai/ios/card",
+    "confidence": 0.3,
+    "note": ""
+   }
+  },
+  "retries": 0,
+  "text": "The drop in blended checkout conversion from 0.0958 to 0.0952, representing a relative change of -0.6 percent, was driven by a single failing segment. That segment was west ios netbanking, where a collapse in payment success rates caused most of the decline.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 4.79,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00241
+   },
+   {
+    "t": 5.14,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=west/ios/netbanking  conf 0.95",
+    "c": 0.00481
+   },
+   {
+    "t": 5.63,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.01585
+   },
+   {
+    "t": 5.63,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.01005
+   },
+   {
+    "t": 5.63,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00712
+   },
+   {
+    "t": 5.63,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=chennai/ios/card  conf 0.30",
+    "c": 0.01296
+   },
+   {
+    "t": 5.63,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 5.63,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 5.63,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = west/ios/netbanking  weights {\"west/ios/netbanking\": 0.95, \"chennai/ios/card\": 0.3}",
+    "c": 0.0
+   },
+   {
+    "t": 5.63,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 8.3,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=west/ios/netbanking",
+    "c": 0.00036
+   },
+   {
+    "t": 8.3,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 8.3,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=west/ios/netbanking",
+    "c": 0.0
+   }
+  ]
+ }
+}

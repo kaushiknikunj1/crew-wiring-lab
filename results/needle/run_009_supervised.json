@@ -1,0 +1,214 @@
+{
+ "seed": 9,
+ "truth": "south/web/emi",
+ "wiring": "supervised",
+ "answer": "south/web/emi",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 10827,
+ "output_tokens": 2241,
+ "cost_usd": 0.01652,
+ "seconds": 10.6,
+ "headline": {
+  "baseline_conversion": 0.0951,
+  "last_week_conversion": 0.0946,
+  "relative_change_pct": -0.6
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "south/web/emi",
+  "votes": {
+   "south/web/emi": 0.45
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "south/web/emi",
+    "confidence": 0.98,
+    "note": "south/web/emi saw its success rate collapse from 0.6921 to 0.3807, representing a massive 45% relative decline."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show stable success rates with drops under 1% (e.g. west/mweb/netbanking fell from 0.7644 to 0.7570), indicating the collapsed segment is outside this slice."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice experienced a collapse in payment success rate, with all changes remaining within roughly 1% of baseline."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   }
+  },
+  "retries": 0,
+  "text": "Blended checkout conversion fell from 0.0",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 3.24,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=south/web/emi  conf 0.98",
+    "c": 0.00202
+   },
+   {
+    "t": 4.32,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00654
+   },
+   {
+    "t": 5.51,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.00942
+   },
+   {
+    "t": 5.51,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00405
+   },
+   {
+    "t": 5.88,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.01523
+   },
+   {
+    "t": 5.88,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.01232
+   },
+   {
+    "t": 5.88,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 5.88,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 5.88,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       by evidence  top = south/web/emi  {\"south/web/emi\": 0.45}",
+    "c": 0.0
+   },
+   {
+    "t": 5.88,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 10.64,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=south/web/emi",
+    "c": 0.0013
+   },
+   {
+    "t": 10.64,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 10.64,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=south/web/emi",
+    "c": 0.0
+   }
+  ]
+ }
+}

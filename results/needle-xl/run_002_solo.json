@@ -1,0 +1,53 @@
+{
+ "seed": 2,
+ "truth": "west/mweb/card/t2",
+ "wiring": "solo",
+ "answer": "unclear",
+ "correct": false,
+ "calls": 1,
+ "input_tokens": 51157,
+ "output_tokens": 516,
+ "cost_usd": 0.0403,
+ "seconds": 6.1,
+ "headline": {
+  "baseline_conversion": 0.0966,
+  "last_week_conversion": 0.0961,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "unclear",
+  "confidence": 0.0,
+  "note": "",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 6.05,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=unclear  conf 0.00",
+    "c": 0.0403
+   },
+   {
+    "t": 6.09,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 6.09,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=unclear",
+    "c": 0.0
+   }
+  ]
+ }
+}

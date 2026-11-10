@@ -1,0 +1,249 @@
+{
+ "seed": 10,
+ "truth": "east/web/wallet/t3",
+ "wiring": "flat",
+ "answer": "south/android/wallet/t1",
+ "correct": false,
+ "calls": 7,
+ "input_tokens": 52920,
+ "output_tokens": 1565,
+ "cost_usd": 0.04556,
+ "seconds": 29.6,
+ "headline": {
+  "baseline_conversion": 0.0964,
+  "last_week_conversion": 0.0959,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "south/android/wallet/t1",
+  "votes": {
+   "south/android/wallet/t1": 2.0,
+   "kolkata/web/netbanking/t5": 1.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "south/android/wallet/t1",
+    "confidence": 0.95,
+    "note": "south/android/wallet/t1 success rate fell from 0.9297 to 0.8085 (a relative drop of ~13.0%), the largest relative decline in this slice."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "south/android/wallet/t1",
+    "confidence": 0.95,
+    "note": "In this slice, minor drops like ncr/ios/wallet/t5 falling from 0.9396 to 0.8231 occurred, but teammate scout1 identifies south/android/wallet/t1 with a massive impact."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout6": {
+    "cause": "kolkata/web/netbanking/t5",
+    "confidence": 0.35,
+    "note": "In this slice, kolkata/web/netbanking/t5 had the largest relative drop in success_rate from 0.8004 to 0.7012 (~12.4%), though teammates report south/android/wallet/t1 elsewhere."
+   }
+  },
+  "text": "Blended checkout conversion fell by 0.5% last week, dropping from a baseline of 0.0964 to 0.0959. The primary driver of this decline was the collapse in the payment success rate for the tier-1 wallet segment on Android in the south.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  sequential  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 3.13,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=south/android/wallet/t1  conf 0.95",
+    "c": 0.00668
+   },
+   {
+    "t": 3.13,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 8.4,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=unclear  conf 0.00",
+    "c": 0.00802
+   },
+   {
+    "t": 8.4,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 12.06,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=south/android/wallet/t1  conf 0.95",
+    "c": 0.00685
+   },
+   {
+    "t": 12.06,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 17.37,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=unclear  conf 0.20",
+    "c": 0.00837
+   },
+   {
+    "t": 17.37,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 22.7,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=unclear  conf 0.00",
+    "c": 0.00823
+   },
+   {
+    "t": 22.7,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 25.96,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=kolkata/web/netbanking/t5  conf 0.35",
+    "c": 0.00704
+   },
+   {
+    "t": 25.96,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"south/android/wallet/t1\": 2.0, \"kolkata/web/netbanking/t5\": 1.0}",
+    "c": 0.0
+   },
+   {
+    "t": 25.96,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = south/android/wallet/t1",
+    "c": 0.0
+   },
+   {
+    "t": 25.96,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 29.56,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=south/android/wallet/t1",
+    "c": 0.00036
+   },
+   {
+    "t": 29.56,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 29.56,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=south/android/wallet/t1",
+    "c": 0.0
+   }
+  ]
+ }
+}

@@ -1,0 +1,228 @@
+{
+ "seed": 6,
+ "truth": "kolkata/android/netbanking",
+ "wiring": "supervised",
+ "answer": "kolkata/android/netbanking",
+ "correct": true,
+ "calls": 8,
+ "input_tokens": 12700,
+ "output_tokens": 2294,
+ "cost_usd": 0.01813,
+ "seconds": 10.8,
+ "headline": {
+  "baseline_conversion": 0.0971,
+  "last_week_conversion": 0.0966,
+  "relative_change_pct": -0.6
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "kolkata/android/netbanking",
+  "votes": {
+   "kolkata/android/netbanking": 0.95
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "Across all 40 segments in this slice, success rates remained virtually flat with the largest relative drop being under 1% (north/web/card fell from 0.8531 to 0.8457)."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show only minor success rate changes of at most around 1% (e.g. east/ios/upi drifted from 0.9001 to 0.8924)."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice shows a collapse in success_rate, with the largest drop being mumbai/web/netbanking from 0.7777 to 0.7709."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "The largest drop in this slice is hyderabad/android/card from 0.837"
+   },
+   "scout6": {
+    "cause": "kolkata/android/netbanking",
+    "confidence": 0.95,
+    "note": "Payment success rate for kolkata/android/netbanking collapsed from 0.7868 to 0.4327, representing a ~45% relative drop while other segments stayed relatively stable."
+   }
+  },
+  "retries": 1,
+  "text": "The primary driver behind the decline was the collapse in payment success rate for the Kolkata Android Netbanking segment. This drop caused blended checkout conversion to fall from a baseline of 0.0971 to 0.0966 last week, representing a relative change of -0.6%.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 4.21,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00718
+   },
+   {
+    "t": 4.21,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00469
+   },
+   {
+    "t": 5.69,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.01248
+   },
+   {
+    "t": 8.0,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00227
+   },
+   {
+    "t": 8.0,
+    "a": "super",
+    "b": "scout4",
+    "s": "supervisor scout4 flagged  these numbers are not in your slice: 121, 160.",
+    "c": 0.0
+   },
+   {
+    "t": 8.0,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     retry  cause=unclear  conf 0.10",
+    "c": 0.01552
+   },
+   {
+    "t": 8.0,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.01539
+   },
+   {
+    "t": 8.0,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=kolkata/android/netbanking  conf 0.95",
+    "c": 0.00959
+   },
+   {
+    "t": 8.0,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  1 retried",
+    "c": 0.0
+   },
+   {
+    "t": 8.0,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 8.0,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = kolkata/android/netbanking  weights {\"kolkata/android/netbanking\": 0.95}",
+    "c": 0.0
+   },
+   {
+    "t": 8.0,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 10.75,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=kolkata/android/netbanking",
+    "c": 0.00034
+   },
+   {
+    "t": 10.75,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 10.75,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=kolkata/android/netbanking",
+    "c": 0.0
+   }
+  ]
+ }
+}

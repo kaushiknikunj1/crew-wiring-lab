@@ -1,0 +1,53 @@
+{
+ "seed": 11,
+ "truth": "ncr/mweb/card/t2",
+ "wiring": "solo",
+ "answer": "ncr/mweb/card/t2",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 51174,
+ "output_tokens": 117,
+ "cost_usd": 0.03882,
+ "seconds": 3.8,
+ "headline": {
+  "baseline_conversion": 0.0966,
+  "last_week_conversion": 0.0961,
+  "relative_change_pct": -0.6
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "ncr/mweb/card/t2",
+  "confidence": 0.99,
+  "note": "The segment ncr/mweb/card/t2 experienced a severe drop in success_rate from 0.8231 to 0.4527 (a relative fall of approximately 45%). Meanwhile, its daily volume is 1,149 sessions with checkout_rate remaining steady (0.0833 base vs 0.0830 last).",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 3.75,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=ncr/mweb/card/t2  conf 0.99",
+    "c": 0.03882
+   },
+   {
+    "t": 3.78,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 3.78,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=ncr/mweb/card/t2",
+    "c": 0.0
+   }
+  ]
+ }
+}

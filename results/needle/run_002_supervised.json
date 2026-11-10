@@ -1,0 +1,215 @@
+{
+ "seed": 2,
+ "truth": "north/ios/emi",
+ "wiring": "supervised",
+ "answer": "north/ios/emi",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 10858,
+ "output_tokens": 2112,
+ "cost_usd": 0.01606,
+ "seconds": 8.7,
+ "headline": {
+  "baseline_conversion": 0.0957,
+  "last_week_conversion": 0.0954,
+  "relative_change_pct": -0.3
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "north/ios/emi",
+  "votes": {
+   "north/ios/emi": 0.45,
+   "central/android/wallet": 0.115
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "north/ios/emi",
+    "confidence": 0.99,
+    "note": "north/ios/emi saw success_rate collapse from 0.7224 to 0.3973 (a ~45% relative drop), while all other segments in the slice had negligible changes."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show stable success rates with changes under 1%, such as east/web/netbanking dropping marginally from 0.7708 to 0.7638."
+   },
+   "scout3": {
+    "cause": "central/android/wallet",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   }
+  },
+  "retries": 0,
+  "text": "The segment responsible for the collapse in payment success rate is north/ios/emi. This drop drove the blended checkout conversion down from a baseline of 0.0957 to 0.0954 last week, representing a relative change of -0.3 percent.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 5.0,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=north/ios/emi  conf 0.99",
+    "c": 0.00698
+   },
+   {
+    "t": 5.0,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00208
+   },
+   {
+    "t": 5.0,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=central/android/wallet  conf 0.30",
+    "c": 0.00497
+   },
+   {
+    "t": 6.07,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.01282
+   },
+   {
+    "t": 6.07,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.00988
+   },
+   {
+    "t": 6.11,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.01572
+   },
+   {
+    "t": 6.11,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 6.11,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 6.11,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       by evidence  top = north/ios/emi  {\"north/ios/emi\": 0.45, \"central/android/wallet\": 0.115}",
+    "c": 0.0
+   },
+   {
+    "t": 6.11,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 8.74,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=north/ios/emi",
+    "c": 0.00034
+   },
+   {
+    "t": 8.74,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 8.74,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=north/ios/emi",
+    "c": 0.0
+   }
+  ]
+ }
+}

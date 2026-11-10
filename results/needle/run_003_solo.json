@@ -1,0 +1,53 @@
+{
+ "seed": 3,
+ "truth": "mumbai/web/netbanking",
+ "wiring": "solo",
+ "answer": "mumbai/web/netbanking",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 9740,
+ "output_tokens": 434,
+ "cost_usd": 0.00893,
+ "seconds": 5.4,
+ "headline": {
+  "baseline_conversion": 0.0982,
+  "last_week_conversion": 0.0974,
+  "relative_change_pct": -0.8
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "mumbai/web/netbanking",
+  "confidence": 1.0,
+  "note": "The success rate for mumbai/web/netbanking experienced a severe drop from 0.7572 to 0.4165, representing a relative collapse of approximately 45%. This segment accounts for 1,400 daily sessions with a steady checkout rate around 0.1219, driving the overall conversion fall.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 5.39,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=mumbai/web/netbanking  conf 1.00",
+    "c": 0.00893
+   },
+   {
+    "t": 5.4,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 5.4,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=mumbai/web/netbanking",
+    "c": 0.0
+   }
+  ]
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "seed": 7,
+ "truth": "north/mweb/upi/t2",
+ "wiring": "solo",
+ "answer": "unclear",
+ "correct": false,
+ "calls": 1,
+ "input_tokens": 51151,
+ "output_tokens": 516,
+ "cost_usd": 0.0403,
+ "seconds": 6.0,
+ "headline": {
+  "baseline_conversion": 0.096,
+  "last_week_conversion": 0.0955,
+  "relative_change_pct": -0.6
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "unclear",
+  "confidence": 0.0,
+  "note": "",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 6.0,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=unclear  conf 0.00",
+    "c": 0.0403
+   },
+   {
+    "t": 6.03,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 6.03,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=unclear",
+    "c": 0.0
+   }
+  ]
+ }
+}

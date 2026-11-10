@@ -1,0 +1,53 @@
+{
+ "seed": 11,
+ "truth": "mumbai/ios/upi",
+ "wiring": "solo",
+ "answer": "mumbai/ios/upi",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 9719,
+ "output_tokens": 104,
+ "cost_usd": 0.00768,
+ "seconds": 2.9,
+ "headline": {
+  "baseline_conversion": 0.0982,
+  "last_week_conversion": 0.0978,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "mumbai/ios/upi",
+  "confidence": 1.0,
+  "note": "Payment success rate for mumbai/ios/upi collapsed from 0.8850 to 0.4868, representing a relative drop of ~45%. Across all 240 segments, this is by far the largest fall, while its checkout rate remained stable at 0.0834 vs 0.0839.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 2.91,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=mumbai/ios/upi  conf 1.00",
+    "c": 0.00768
+   },
+   {
+    "t": 2.92,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  WARN unpinned",
+    "c": 0.0
+   },
+   {
+    "t": 2.92,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=mumbai/ios/upi",
+    "c": 0.0
+   }
+  ]
+ }
+}

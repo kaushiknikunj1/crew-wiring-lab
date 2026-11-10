@@ -1,0 +1,216 @@
+{
+ "seed": 11,
+ "truth": "ncr/mweb/card/t2",
+ "wiring": "supervised",
+ "answer": "ncr/mweb/card/t2",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 52324,
+ "output_tokens": 1524,
+ "cost_usd": 0.04496,
+ "seconds": 17.2,
+ "headline": {
+  "baseline_conversion": 0.0966,
+  "last_week_conversion": 0.0961,
+  "relative_change_pct": -0.6
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "ncr/mweb/card/t2",
+  "votes": {
+   "ncr/mweb/card/t2": 0.95,
+   "hyderabad/mweb/card/t3": 0.95,
+   "chennai/web/emi/t2": 0.4
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "ncr/mweb/card/t2",
+    "confidence": 0.95,
+    "note": "ncr/mweb/card/t2 success rate collapsed from 0.8231 to 0.4527, representing a relative drop of ~45%."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment shows a collapsed success rate; the largest drop observed was mumbai/android/wallet/t4 from 0.9153 to 0.8191."
+   },
+   "scout5": {
+    "cause": "hyderabad/mweb/card/t3",
+    "confidence": 0.95,
+    "note": "hyderabad/mweb/card/t3 had the largest relative fall in success_rate in the slice, dropping from 0.8469 to 0.7562 (a ~10.7% decrease)."
+   },
+   "scout6": {
+    "cause": "chennai/web/emi/t2",
+    "confidence": 0.4,
+    "note": "chennai/web/emi/t2 had the largest relative drop in success rate in this slice from 0.7019 to 0.6121 (-12.8%), though several other segments in chennai also dropped ~10-12%."
+   }
+  },
+  "retries": 0,
+  "text": "Blended checkout conversion fell by 0.6 percent last week, dropping from a baseline of 0.0966 to 0.0961. The collapse in payment success rate was driven by the tier-2 card transactions on mobile web in the National Capital Region.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 14.35,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.04459
+   },
+   {
+    "t": 14.35,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.02849
+   },
+   {
+    "t": 14.35,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=ncr/mweb/card/t2  conf 0.95",
+    "c": 0.00676
+   },
+   {
+    "t": 14.35,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.03663
+   },
+   {
+    "t": 14.35,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=hyderabad/mweb/card/t3  conf 0.95",
+    "c": 0.01364
+   },
+   {
+    "t": 14.35,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=chennai/web/emi/t2  conf 0.40",
+    "c": 0.02053
+   },
+   {
+    "t": 14.35,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 14.35,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 14.35,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = ncr/mweb/card/t2  weights {\"ncr/mweb/card/t2\": 0.95, \"hyderabad/mweb/card/t3\": 0.95, \"chennai/web/emi/t2\": 0.4}",
+    "c": 0.0
+   },
+   {
+    "t": 14.35,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 17.22,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=ncr/mweb/card/t2",
+    "c": 0.00037
+   },
+   {
+    "t": 17.22,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 17.22,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=ncr/mweb/card/t2",
+    "c": 0.0
+   }
+  ]
+ }
+}

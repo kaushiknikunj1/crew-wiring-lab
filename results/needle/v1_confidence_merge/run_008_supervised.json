@@ -1,0 +1,214 @@
+{
+ "seed": 8,
+ "truth": "hyderabad/mweb/card",
+ "wiring": "supervised",
+ "answer": "hyderabad/mweb/card",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 10829,
+ "output_tokens": 1638,
+ "cost_usd": 0.01426,
+ "seconds": 8.5,
+ "headline": {
+  "baseline_conversion": 0.0933,
+  "last_week_conversion": 0.0929,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "hyderabad/mweb/card",
+  "votes": {
+   "hyderabad/mweb/card": 0.95
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "In this slice of 40 segments, no payment success rate collapsed; the largest relative drop was north/web/card from 0.8532 to 0.8451 (under 1%)."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout5": {
+    "cause": "hyderabad/mweb/card",
+    "confidence": 0.95,
+    "note": "In hyderabad/mweb/card, success_rate collapsed from 0.8166 to 0.4491 (a relative fall of ~45%), far exceeding any other segment."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice experienced a collapse in success rate; the largest relative drop was chennai/android/card from 0.8346 to 0.8264."
+   }
+  },
+  "retries": 0,
+  "text": "Blended checkout conversion fell from 0.0933 to 0.0929 last week, representing a relative drop of -0.5 percent. The single segment driving this collapse was mobile web card payments in Hyderabad.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 3.12,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00157
+   },
+   {
+    "t": 5.63,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.01396
+   },
+   {
+    "t": 5.63,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.00816
+   },
+   {
+    "t": 5.63,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.01109
+   },
+   {
+    "t": 5.63,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=hyderabad/mweb/card  conf 0.95",
+    "c": 0.0032
+   },
+   {
+    "t": 5.63,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00527
+   },
+   {
+    "t": 5.63,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 5.63,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 5.63,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = hyderabad/mweb/card  weights {\"hyderabad/mweb/card\": 0.95}",
+    "c": 0.0
+   },
+   {
+    "t": 5.63,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 8.5,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=hyderabad/mweb/card",
+    "c": 0.0003
+   },
+   {
+    "t": 8.5,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 8.5,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=hyderabad/mweb/card",
+    "c": 0.0
+   }
+  ]
+ }
+}

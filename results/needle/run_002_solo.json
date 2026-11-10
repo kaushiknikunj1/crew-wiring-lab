@@ -1,0 +1,53 @@
+{
+ "seed": 2,
+ "truth": "north/ios/emi",
+ "wiring": "solo",
+ "answer": "north/ios/emi",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 9748,
+ "output_tokens": 355,
+ "cost_usd": 0.00864,
+ "seconds": 4.7,
+ "headline": {
+  "baseline_conversion": 0.0957,
+  "last_week_conversion": 0.0954,
+  "relative_change_pct": -0.3
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "north/ios/emi",
+  "confidence": 1.0,
+  "note": "The segment north/ios/emi experienced a severe collapse in success rate, plummeting from 0.7224 to 0.3973. This represents a relative decline of approximately 45.0%, by far the largest fall across all segments.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 4.65,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=north/ios/emi  conf 1.00",
+    "c": 0.00864
+   },
+   {
+    "t": 4.66,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 4.66,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=north/ios/emi",
+    "c": 0.0
+   }
+  ]
+ }
+}

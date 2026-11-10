@@ -69,17 +69,18 @@ def compress(trace: list[dict], truth: str, answer: str, calls: int) -> list[dic
     return ev
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--out", required=True)
-    ap.add_argument("--seed", type=int)
-    a = ap.parse_args()
+TASKS = ["planted", "needle", "needle-xl"]
+
+
+def export_task(task: str, seed_arg: int | None = None) -> dict | None:
+    global RES
+    RES = HERE / "results" / task if task != "planted" else HERE / "results"
     runs = load()
     if not runs:
-        raise SystemExit("no complete seeds in results/")
-    seed = a.seed if a.seed in runs else pick(runs)
+        return None
+    seed = seed_arg if seed_arg in runs else pick(runs)
     r = runs[seed]
-    out = dict(seed=seed, truth=r["solo"]["truth"], headline=r["solo"]["headline"], model=None, summary=summary(runs), wirings={})
+    out = dict(task=task, seed=seed, truth=r["solo"]["truth"], headline=r["solo"]["headline"], model=None, summary=summary(runs), wirings={})
     sm = RES / "summary.json"
     if sm.exists():
         tot = json.loads(sm.read_text())["total"]; out["model"] = tot.get("model"); out["thinking"] = tot.get("thinking")
@@ -88,10 +89,21 @@ def main():
         out["wirings"][w] = dict(answer=x["answer"], correct=x["correct"], calls=x["calls"], usd=x["cost_usd"], seconds=x["seconds"],
                                  tokens=x["input_tokens"] + x["output_tokens"], retries=res.get("retries", 0), votes=res.get("votes", {}),
                                  text=res.get("text") or res.get("note", ""), trace=compress(res["trace"], x["truth"], x["answer"], x["calls"]))
-    pathlib.Path(a.out).write_text(json.dumps(out, indent=0, separators=(",", ":")))
     s = out["summary"]["by_wiring"]
-    print(f"seed {seed} truth={out['truth']}  " + "  ".join(f"{w}:{'OK' if r[w]['correct'] else 'MISS'}" for w in ORDER))
-    print("  ".join(f"{w} acc={s[w]['accuracy']:.0%} ${s[w]['usd']:.4f}" for w in ORDER), f"| total ${out['summary']['total']['usd']} over {out['summary']['total']['seeds']} seeds")
+    print(f"[{task}] seed {seed} truth={out['truth']}  " + "  ".join(f"{w}:{'OK' if r[w]['correct'] else 'MISS'}" for w in ORDER))
+    print("   " + "  ".join(f"{w} acc={s[w]['accuracy']:.0%} ${s[w]['usd']:.4f} {s[w]['seconds']}s" for w in ORDER), f"| {out['summary']['total']['seeds']} seeds ${out['summary']['total']['usd']}")
+    return out
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", required=True)
+    ap.add_argument("--seed", type=int, help="replay seed for every task (default: the seed where wirings disagree most)")
+    a = ap.parse_args()
+    tasks = {t: o for t in TASKS if (o := export_task(t, a.seed)) is not None}
+    if not tasks:
+        raise SystemExit("no complete seeds in results/")
+    pathlib.Path(a.out).write_text(json.dumps(dict(order=list(tasks), tasks=tasks), indent=0, separators=(",", ":")))
 
 
 if __name__ == "__main__":

@@ -16,10 +16,11 @@ import statistics
 import time
 
 import llm
+import crew
+import tasks
 from crew import WIRINGS
-from data import generate
 
-OUT = pathlib.Path(__file__).resolve().parent / "results"
+RESULTS = pathlib.Path(__file__).resolve().parent / "results"
 
 
 def main():
@@ -27,15 +28,18 @@ def main():
     ap.add_argument("--seeds", type=int, default=12)
     ap.add_argument("--start", type=int, default=1)
     ap.add_argument("--wirings", default="solo,flat,supervised")
+    ap.add_argument("--task", default="planted", choices=sorted(tasks.BY_NAME), help="planted (6 labels) or needle (240 segments)")
     ap.add_argument("--only", help="comma-separated seeds to (re)run instead of a range; summary is rebuilt from every run in results/")
     a = ap.parse_args()
-    OUT.mkdir(exist_ok=True)
+    task = tasks.BY_NAME[a.task]; crew.set_task(task)
+    OUT = RESULTS / a.task if a.task != "planted" else RESULTS
+    OUT.mkdir(parents=True, exist_ok=True)
     wirings = [w.strip() for w in a.wirings.split(",")]
     rows = []
-    print(f"provider={llm.provider()} model={llm.GEMINI_MODEL if llm.provider()=='gemini' else '-'} thinking={llm.GEMINI_THINKING}")
+    print(f"task={a.task} provider={llm.provider()} model={llm.GEMINI_MODEL if llm.provider()=='gemini' else '-'} thinking={llm.GEMINI_THINKING}")
     seeds = [int(x) for x in a.only.split(",")] if a.only else list(range(a.start, a.start + a.seeds))
     for seed in seeds:
-        ds = generate(seed)
+        ds = task.generate(seed)
         for w in wirings:
             u0 = dict(llm.USAGE); t0 = time.perf_counter()
             res = WIRINGS[w](ds)
@@ -46,7 +50,7 @@ def main():
             rows.append(row)
             (OUT / f"run_{seed:03d}_{w}.json").write_text(json.dumps(dict(row, headline=ds.headline(), result=res), indent=1))
             print(f"seed {seed:3d}  {w:<10} truth={ds.cause:<26} answer={res['answer']:<26} {'OK ' if row['correct'] else 'MISS'} calls={row['calls']:2d} ${row['cost_usd']:.4f} {row['seconds']}s")
-    rows = [{k: v for k, v in json.loads(p.read_text()).items() if k not in ("headline", "result")} for p in sorted(OUT.glob("run_*.json"))]
+    rows = [{k: v for k, v in json.loads(p.read_text()).items() if k not in ("headline", "result")} for p in sorted(OUT.glob("run_*.json"))]  # this task's results only
     summary = {}
     for w in wirings:
         rs = [r for r in rows if r["wiring"] == w]

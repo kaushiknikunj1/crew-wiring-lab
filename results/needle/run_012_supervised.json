@@ -1,0 +1,215 @@
+{
+ "seed": 12,
+ "truth": "chennai/ios/netbanking",
+ "wiring": "supervised",
+ "answer": "chennai/ios/netbanking",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 10849,
+ "output_tokens": 1693,
+ "cost_usd": 0.01449,
+ "seconds": 8.4,
+ "headline": {
+  "baseline_conversion": 0.0964,
+  "last_week_conversion": 0.0959,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "chennai/ios/netbanking",
+  "votes": {
+   "central/mweb/emi": 0.117,
+   "chennai/ios/netbanking": 0.45
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "central/mweb/emi",
+    "confidence": 0.95,
+    "note": "central/mweb/emi saw success rate drop significantly from 0.6915 to 0.6105, representing an 11.7% relative decline, while other segments in this slice remained relatively flat."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "Across all 40 segments in this slice, success rates drifted by at most ~1% (e.g., mumbai/android/upi fell from 0.9043 to 0.8954), with no collapsing segment present."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show stable success rates with none dropping by more than 1% (e.g. hyderabad/web/upi fell slightly from 0.8734 to 0.8660)."
+   },
+   "scout6": {
+    "cause": "chennai/ios/netbanking",
+    "confidence": 0.99,
+    "note": "chennai/ios/netbanking success rate collapsed by 45.0% from 0.7996 to 0.4398."
+   }
+  },
+  "retries": 0,
+  "text": "Blended checkout conversion fell by 0.5% last week, dropping from a baseline conversion of 0.0964 to 0.0959. The single segment responsible for most of this decline was netbanking transactions on iOS in Chennai.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 5.76,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.01416
+   },
+   {
+    "t": 5.76,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.01128
+   },
+   {
+    "t": 5.76,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=central/mweb/emi  conf 0.95",
+    "c": 0.00397
+   },
+   {
+    "t": 5.76,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00167
+   },
+   {
+    "t": 5.76,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00841
+   },
+   {
+    "t": 5.76,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=chennai/ios/netbanking  conf 0.99",
+    "c": 0.00618
+   },
+   {
+    "t": 5.76,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 5.76,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 5.76,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       by evidence  top = chennai/ios/netbanking  {\"central/mweb/emi\": 0.117, \"chennai/ios/netbanking\": 0.45}",
+    "c": 0.0
+   },
+   {
+    "t": 5.76,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 8.43,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=chennai/ios/netbanking",
+    "c": 0.00033
+   },
+   {
+    "t": 8.43,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 8.43,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=chennai/ios/netbanking",
+    "c": 0.0
+   }
+  ]
+ }
+}

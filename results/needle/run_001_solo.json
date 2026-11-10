@@ -1,0 +1,53 @@
+{
+ "seed": 1,
+ "truth": "west/ios/netbanking",
+ "wiring": "solo",
+ "answer": "west/ios/netbanking",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 9722,
+ "output_tokens": 102,
+ "cost_usd": 0.00767,
+ "seconds": 2.7,
+ "headline": {
+  "baseline_conversion": 0.0958,
+  "last_week_conversion": 0.0952,
+  "relative_change_pct": -0.6
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "west/ios/netbanking",
+  "confidence": 1.0,
+  "note": "west/ios/netbanking suffered a major collapse in success_rate from 0.7984 to 0.4391, representing a relative drop of approximately 45%. Other segments showed minor fluctuations, such as chennai/ios/card falling from 0.8563 to 0.7448.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 2.73,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=west/ios/netbanking  conf 1.00",
+    "c": 0.00767
+   },
+   {
+    "t": 2.74,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 2.74,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=west/ios/netbanking",
+    "c": 0.0
+   }
+  ]
+ }
+}

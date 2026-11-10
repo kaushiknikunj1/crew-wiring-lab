@@ -1,0 +1,248 @@
+{
+ "seed": 1,
+ "truth": "ncr/mweb/netbanking/t3",
+ "wiring": "flat",
+ "answer": "ncr/mweb/netbanking/t3",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 52824,
+ "output_tokens": 2212,
+ "cost_usd": 0.04791,
+ "seconds": 30.9,
+ "headline": {
+  "baseline_conversion": 0.0951,
+  "last_week_conversion": 0.0948,
+  "relative_change_pct": -0.4
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "ncr/mweb/netbanking/t3",
+  "votes": {
+   "ncr/mweb/netbanking/t3": 1.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "ncr/mweb/netbanking/t3",
+    "confidence": 0.99,
+    "note": "Payment success rate for ncr/mweb/netbanking/t3 collapsed by 45.0% from 0.7789 to 0.4284 while all other segments in the slice remained stable."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.15,
+    "note": "Largest relative drop in this slice was bengaluru/ios/wallet/t5 from 0.9173 to 0.8137 (-11.3%), which is not a complete collapse."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": ""
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "The largest relative drop in this slice is chennai/web/emi/t4 from 0.7223 to 0.6228 (-13.8%), which is a modest drift rather than a collapse."
+   }
+  },
+  "text": "Blended checkout conversion fell from 0.0951 to 0.0948 last week, marking a relative drop of -0.4 percent. The single segment driving most of this decline was netbanking transactions on mobile web in Tier 3 cities within the National Capital Region.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  sequential  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 5.18,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=unclear  conf 0.20",
+    "c": 0.00796
+   },
+   {
+    "t": 5.18,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 10.61,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=unclear  conf 0.10",
+    "c": 0.00797
+   },
+   {
+    "t": 10.61,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 14.97,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=ncr/mweb/netbanking/t3  conf 0.99",
+    "c": 0.00742
+   },
+   {
+    "t": 14.97,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 19.42,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=unclear  conf 0.15",
+    "c": 0.00787
+   },
+   {
+    "t": 19.42,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 23.71,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=unclear  conf 0.10",
+    "c": 0.00824
+   },
+   {
+    "t": 23.71,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 28.41,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=unclear  conf 0.10",
+    "c": 0.00809
+   },
+   {
+    "t": 28.41,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"ncr/mweb/netbanking/t3\": 1.0}",
+    "c": 0.0
+   },
+   {
+    "t": 28.41,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = ncr/mweb/netbanking/t3",
+    "c": 0.0
+   },
+   {
+    "t": 28.41,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 30.86,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=ncr/mweb/netbanking/t3",
+    "c": 0.00035
+   },
+   {
+    "t": 30.86,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 30.86,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=ncr/mweb/netbanking/t3",
+    "c": 0.0
+   }
+  ]
+ }
+}

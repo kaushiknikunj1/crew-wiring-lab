@@ -1,51 +1,53 @@
 """Three wirings for the same question, same model, same tools, same budget.
 
   solo        one agent reads every slice and answers once
-  flat        six scouts, each on one slice, run in order and READ EACH OTHER'S DRAFTS; majority vote; writer
-  supervised  six scouts, each sees ONLY its slice; a supervisor checks every draft against the evidence
-              (numbers must come from the slice, cause must be a known label) and sends a failing scout
-              back once; confidence-weighted vote; writer
+  flat        six scouts, each on one slice, run IN SEQUENCE and READ EACH OTHER'S DRAFTS; majority vote; writer
+  supervised  six scouts, each sees ONLY its slice, run IN PARALLEL (isolation makes that possible); a deterministic
+              supervisor checks every draft against the evidence (numbers must come from the slice, the answer must be
+              something the slice can show) and sends a failing scout back once; confidence-weighted vote; writer
 
+The task is pluggable (see tasks.py): task A "planted cause" (six labels), task B "needle" (240 segments).
 Every step is appended to a trace: who sent what to whom, tokens, cost, elapsed time.
-With no API key the scouts fall back to a deterministic rule (biggest relative drop in the slice),
-so the whole lab runs end to end without a model — the comparison is then between wirings only.
+With no API key the scouts fall back to a deterministic rule, so the whole lab runs end to end without a model.
 """
 from __future__ import annotations
 
 import json
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 import llm
-from data import CAUSES, Dataset, slices
+import tasks
 
-LABELS = sorted(CAUSES) + ["unclear"]
+TASK = tasks.PLANTED          # default; run_lab.py switches with set_task()
+MERGE = __import__("os").environ.get("MERGE", "evidence")   # supervised merge: "evidence" (v2) or "confidence" (v1)
 
-SCOUT_SYS = ("You are one analyst in a crew investigating why blended checkout conversion fell last week. "
-             "You see ONE slice of the data. Reply with JSON only: "
-             '{"cause": <one of the labels>, "confidence": <0..1>, "note": <one sentence citing numbers from your slice>}. '
-             "If your slice cannot distinguish the cause, say \"unclear\" with low confidence. Never invent numbers.")
-SOLO_SYS = ("You are a senior analyst. You see every slice of the data. Decide why blended checkout conversion fell last week. "
-            "Reply with JSON only: "
-            '{"cause": <one of the labels>, "confidence": <0..1>, "note": <two sentences citing numbers from the tables>}. Never invent numbers.')
-WRITER_SYS = ("Write the crew's two-sentence answer to 'why did conversion fall last week'. Use only the numbers given, "
-              "name the cause in plain words, and do not mention votes, scores or weights. Plain prose, no JSON.")
+
+def set_task(t):
+    global TASK
+    TASK = t
+
+
+SCOUT_SYS = ("You are one analyst in a crew. You see ONE slice of the data. {q} Reply with JSON only: "
+             '{{"cause": <answer>, "confidence": <0..1>, "note": <one sentence citing numbers from your slice>}}. '
+             "If your slice cannot settle it, answer \"unclear\" with low confidence. Never invent numbers.")
+SOLO_SYS = ("You are a senior analyst. You see every slice of the data. {q} Reply with JSON only: "
+            '{{"cause": <answer>, "confidence": <0..1>, "note": <two sentences citing numbers from the tables>}}. Never invent numbers.')
+WRITER_SYS = ("Write the crew's two-sentence answer to the question. Use only the numbers given, name the cause in plain words, "
+              "and do not mention votes, scores or weights. Plain prose, no JSON.")
 
 
 class Trace:
     def __init__(self):
         self.t0 = time.perf_counter(); self.events = []
 
-    def add(self, a: str, b: str, s: str, usage_before: dict | None = None):
+    def add(self, a: str, b: str, s: str, usage_before: dict | None = None, usage_after: dict | None = None):
         c = 0.0
         if usage_before is not None:
-            d = {k: llm.USAGE[k] - usage_before[k] for k in llm.USAGE}
-            c = llm.usage_cost_usd(d)
+            after = usage_after or llm.USAGE
+            c = llm.usage_cost_usd({k: after[k] - usage_before[k] for k in llm.USAGE})
         self.events.append(dict(t=round(time.perf_counter() - self.t0, 2), a=a, b=b, s=s, c=round(c, 5)))
-
-
-def _labels_text() -> str:
-    return "Labels: " + ", ".join(f"{k} ({v})" for k, v in CAUSES.items()) + ", unclear."
 
 
 def _parse(text: str) -> dict:
@@ -62,9 +64,7 @@ def _parse(text: str) -> dict:
             d = {"cause": mc.group(1), "confidence": mf.group(1) if mf else 0.3, "note": mn.group(1) if mn else ""}
         else:
             return {"cause": "unclear", "confidence": 0.0, "note": ""}
-    cause = str(d.get("cause", "unclear")).strip().lower().replace(" ", "_")
-    if cause not in LABELS:
-        cause = "unclear"
+    cause = TASK.normalize(str(d.get("cause", "unclear")))
     try:
         conf = max(0.0, min(1.0, float(d.get("confidence", 0.3))))
     except (TypeError, ValueError):
@@ -72,59 +72,30 @@ def _parse(text: str) -> dict:
     return {"cause": cause, "confidence": conf, "note": str(d.get("note", ""))[:300]}
 
 
-# ---- deterministic fallback scout (no key): biggest relative drop in the slice ----------------------
-def rule_scout(name: str, sl: dict) -> dict:
-    t = sl["table"]
-    if name == "scout1":
-        d = {k: v["delta_pct"] for k, v in t.items()}
-        if d["android"]["checkout_rate"] < -10 and d["ios"]["checkout_rate"] > -5:
-            return {"cause": "checkout_latency_android", "confidence": 0.8, "note": f"android checkout_rate {d['android']['checkout_rate']}% vs ios {d['ios']['checkout_rate']}%"}
-        if d["ios"]["attempt_rate"] < -15:
-            return {"cause": "ios_release_bug", "confidence": 0.8, "note": f"ios attempt_rate {d['ios']['attempt_rate']}%"}
-        if all(d[p]["checkout_rate"] < -6 for p in d):
-            return {"cause": "pricing_change", "confidence": 0.4, "note": f"checkout_rate down on all platforms: {d['android']['checkout_rate']}%, {d['ios']['checkout_rate']}%, {d['web']['checkout_rate']}%"}
-        return {"cause": "unclear", "confidence": 0.2, "note": "platform rates moved together"}
-    if name == "scout2":
-        d = {k: v["delta_pct"] for k, v in t.items()}
-        if d["upi"]["success_rate"] < -12:
-            return {"cause": "upi_gateway_outage", "confidence": 0.85, "note": f"upi success_rate {d['upi']['success_rate']}%"}
-        if d["card"]["success_rate"] < -12:
-            return {"cause": "card_bin_block", "confidence": 0.85, "note": f"card success_rate {d['card']['success_rate']}%"}
-        return {"cause": "unclear", "confidence": 0.2, "note": "success rates flat by method"}
-    if name == "scout3":
-        d = {k: v["delta_pct"] for k, v in t.items()}
-        if d["paid"]["sessions_per_day"] > 30 and d["paid"]["checkout_rate"] < -20:
-            return {"cause": "paid_traffic_mix", "confidence": 0.85, "note": f"paid sessions_per_day {d['paid']['sessions_per_day']}%, paid checkout_rate {d['paid']['checkout_rate']}%"}
-        if all(d[s]["checkout_rate"] < -6 for s in d):
-            return {"cause": "pricing_change", "confidence": 0.3, "note": "checkout_rate down on every source"}
-        return {"cause": "unclear", "confidence": 0.2, "note": "source mix stable"}
-    if name == "scout4":
-        d = t["all"]["delta_pct"]
-        worst = min(("checkout_rate", "attempt_rate", "success_rate"), key=lambda f: d[f])
-        guess = {"checkout_rate": "pricing_change", "attempt_rate": "ios_release_bug", "success_rate": "upi_gateway_outage"}[worst]
-        return {"cause": guess, "confidence": 0.25, "note": f"{worst} moved {d[worst]}% overall"}
-    # scout5/6 see only blended numbers: they cannot know
-    return {"cause": "unclear", "confidence": 0.1, "note": "blended series only"}
+def _slice_text(sl: dict) -> str:
+    return TASK.render(sl["table"])
 
 
 def ask_scout(name: str, sl: dict, drafts: list[str] | None = None, warning: str | None = None) -> dict:
-    user = f"{_labels_text()}\nYour slice: {sl['slice']}\n{json.dumps(sl['table'])}"
+    user = f"{TASK.labels_text()}\nYour slice: {sl['slice']}\n{_slice_text(sl)}"
     if drafts:
         user += "\n\nDrafts from teammates so far:\n" + "\n".join(drafts)
     if warning:
         user += f"\n\nSupervisor: {warning} Answer again."
-    text = llm.complete(SCOUT_SYS, user, max_tokens=420)
-    return _parse(text) if text is not None else rule_scout(name, sl)
+    text = llm.complete(SCOUT_SYS.format(q=TASK.question), user, max_tokens=420)
+    return _parse(text) if text is not None else TASK.rule_scout(name, sl)
 
 
-def unpinned(note: str, table: dict) -> set[str]:
+def unpinned(note: str, table) -> set[str]:
     """Numbers in the note that are not in the table. Sign-insensitive: 'dropped 20.1%' matches a -20.1 delta."""
     allowed = {n.lstrip("-") for n in llm.allowed_numbers(table)}
     return {n for n in llm.numbers_in(note) if n.lstrip("-") not in allowed}
 
 
 def supervisor_check(draft: dict, sl: dict) -> str | None:
-    """Deterministic: every number in the note must exist in the slice; a confident answer needs a note."""
+    """Deterministic: numbers must exist in the slice; the answer must be something this slice can show."""
+    if not TASK.in_slice(draft["cause"], sl["table"]):
+        return f"'{draft['cause']}' is not in your slice; you can only name what you can see."
     bad = unpinned(draft["note"], sl["table"]) if draft["note"] else set()
     if bad:
         return f"these numbers are not in your slice: {', '.join(sorted(bad)[:4])}."
@@ -133,46 +104,47 @@ def supervisor_check(draft: dict, sl: dict) -> str | None:
     return None
 
 
-def vote(drafts: dict[str, dict], weighted: bool) -> tuple[str, dict]:
+def vote(drafts: dict[str, dict], weighted: bool, sl: dict | None = None) -> tuple[str, dict]:
+    """flat: one scout one vote. supervised: rank by the evidence each draft cites (TASK.score on the scout's own slice),
+    falling back to the scout's confidence when the task has no such number (MERGE=confidence forces the old behaviour)."""
     tally: dict[str, float] = {}
-    for d in drafts.values():
+    for n, d in drafts.items():
         if d["cause"] == "unclear":
             continue
-        tally[d["cause"]] = tally.get(d["cause"], 0) + (d["confidence"] if weighted else 1.0)
+        w = 1.0
+        if weighted:
+            ev = TASK.score(d["cause"], sl[n]["table"]) if (sl and MERGE == "evidence") else None
+            w = ev if ev is not None else d["confidence"]
+        tally[d["cause"]] = tally.get(d["cause"], 0) + w
     if not tally:
         return "unclear", {}
     best = max(tally.items(), key=lambda kv: kv[1])[0]
-    return best, {k: round(v, 2) for k, v in tally.items()}
+    return best, {k: round(v, 3) for k, v in tally.items()}
 
 
 def write(answer: str, tally: dict, headline: dict) -> str:
-    user = f"cause: {answer}\nvotes: {json.dumps(tally)}\nheadline: {json.dumps(headline)}"
+    user = f"question: {TASK.question}\ncause: {answer}\nvotes: {json.dumps(tally)}\nheadline: {json.dumps(headline)}"
     text = llm.complete(WRITER_SYS, user, max_tokens=320)
     return text if text is not None else f"Conversion fell {headline['relative_change_pct']}% week on week; the crew's answer is {answer}."
 
 
 # ---- the three wirings --------------------------------------------------------------------------
-def run_solo(ds: Dataset) -> dict:
-    tr = Trace(); sl = slices(ds)
-    tr.add("bus", "agent", "agent      reads bus  6 slices")
+def run_solo(ds) -> dict:
+    tr = Trace(); sl = TASK.slices(ds)
+    tr.add("bus", "agent", f"agent      reads bus  {len(sl)} slices")
     u0 = dict(llm.USAGE)
-    user = _labels_text() + "\n" + "\n".join(f"{v['slice']}: {json.dumps(v['table'])}" for v in sl.values())
-    text = llm.complete(SOLO_SYS, user, max_tokens=520)
-    d = _parse(text) if text is not None else _solo_rule(sl)
+    user = TASK.labels_text() + "\n" + "\n".join(f"{v['slice']}:\n{_slice_text(v)}" for v in sl.values())
+    text = llm.complete(SOLO_SYS.format(q=TASK.question), user, max_tokens=520)
+    d = _parse(text) if text is not None else max((TASK.rule_scout(n, sl[n]) for n in sl), key=lambda x: x["confidence"])
     tr.add("agent", "writer", f"agent      answer  cause={d['cause']}  conf {d['confidence']:.2f}", u0)
-    tr.add("writer", "verify", "verify     numbers pinned  " + ("ok" if not unpinned(d["note"], sl) else "WARN unpinned"))
+    tr.add("writer", "verify", "verify     numbers pinned  " + ("ok" if not unpinned(d["note"], [v["table"] for v in sl.values()]) else "WARN unpinned"))
     tr.add("verify", "bus", f"done       cause={d['cause']}")
     return dict(wiring="solo", answer=d["cause"], confidence=d["confidence"], note=d["note"], trace=tr.events)
 
 
-def _solo_rule(sl: dict) -> dict:
-    """No key: the analyst who sees everything keeps the strongest single signal."""
-    return max((rule_scout(n, sl[n]) for n in sl), key=lambda d: d["confidence"])
-
-
-def run_flat(ds: Dataset) -> dict:
-    tr = Trace(); sl = slices(ds); drafts: dict[str, dict] = {}; shared: list[str] = []
-    tr.add("bus", "planner", "planner    reads bus  6 slices"); tr.add("planner", "decompose", "decompose  6 sub-questions"); tr.add("decompose", "route", "route      6 scouts  shared drafts ON")
+def run_flat(ds) -> dict:
+    tr = Trace(); sl = TASK.slices(ds); drafts: dict[str, dict] = {}; shared: list[str] = []
+    tr.add("bus", "planner", f"planner    reads bus  {len(sl)} slices"); tr.add("planner", "decompose", f"decompose  {len(sl)} sub-questions"); tr.add("decompose", "route", f"route      {len(sl)} scouts  sequential  shared drafts ON")
     for n in sl:
         tr.add("route", n, f"dispatch   {n}  {sl[n]['slice']}")
     for n in sl:
@@ -182,31 +154,41 @@ def run_flat(ds: Dataset) -> dict:
         shared.append(f"{n}: cause={d['cause']} conf={d['confidence']:.2f} note={d['note'][:120]}")
         tr.add(n, "merge", f"{n:<10} returned  cause={d['cause']}  conf {d['confidence']:.2f}", u0)
     answer, tally = vote(drafts, weighted=False)
-    tr.add("merge", "dedupe", f"merge      6 drafts  votes {json.dumps(tally)}"); tr.add("dedupe", "rank", f"rank       top = {answer}")
+    tr.add("merge", "dedupe", f"merge      {len(sl)} drafts  votes {json.dumps(tally)}"); tr.add("dedupe", "rank", f"rank       top = {answer}")
     tr.add("rank", "cite", "cite       no check in this wiring")
     u0 = dict(llm.USAGE); text = write(answer, tally, ds.headline()); tr.add("cite", "writer", f"writer     draft  cause={answer}", u0)
     tr.add("writer", "verify", "verify     skipped"); tr.add("verify", "bus", f"done       cause={answer}")
     return dict(wiring="flat", answer=answer, votes=tally, drafts=drafts, text=text, trace=tr.events)
 
 
-def run_supervised(ds: Dataset) -> dict:
-    tr = Trace(); sl = slices(ds); drafts: dict[str, dict] = {}; retries = 0
-    tr.add("bus", "planner", "planner    reads bus  6 slices"); tr.add("planner", "decompose", "decompose  6 sub-questions"); tr.add("decompose", "route", "route      6 scouts  isolated")
+def run_supervised(ds) -> dict:
+    tr = Trace(); sl = TASK.slices(ds); drafts: dict[str, dict] = {}; retries = 0
+    tr.add("bus", "planner", f"planner    reads bus  {len(sl)} slices"); tr.add("planner", "decompose", f"decompose  {len(sl)} sub-questions"); tr.add("decompose", "route", f"route      {len(sl)} scouts  parallel  isolated")
     for n in sl:
         tr.add("route", n, f"dispatch   {n}  {sl[n]['slice']}")
-    for n in sl:
-        u0 = dict(llm.USAGE)
-        d = ask_scout(n, sl[n]); tr.add(n, "super", f"{n:<10} returned  slice only  cause={d['cause']}  conf {d['confidence']:.2f}", u0)
-        w = supervisor_check(d, sl[n])
+
+    def one(n):
+        """A scout plus its supervisor loop, run on its own thread. Usage deltas are measured per call."""
+        local = []
+        u0 = dict(llm.USAGE); d = ask_scout(n, sl[n]); u1 = dict(llm.USAGE)
+        local.append((n, "super", f"{n:<10} returned  slice only  cause={d['cause']}  conf {d['confidence']:.2f}", u0, u1))
+        w = supervisor_check(d, sl[n]); r = 0
         if w:
-            retries += 1; tr.add("super", n, f"supervisor {n} flagged  {w}")
-            u1 = dict(llm.USAGE); d = ask_scout(n, sl[n], warning=w); tr.add(n, "super", f"{n:<10} retry  cause={d['cause']}  conf {d['confidence']:.2f}", u1)
+            r = 1; local.append(("super", n, f"supervisor {n} flagged  {w}", None, None))
+            u2 = dict(llm.USAGE); d = ask_scout(n, sl[n], warning=w); u3 = dict(llm.USAGE)
+            local.append((n, "super", f"{n:<10} retry  cause={d['cause']}  conf {d['confidence']:.2f}", u2, u3))
             if supervisor_check(d, sl[n]):
-                d = {"cause": "unclear", "confidence": 0.0, "note": ""}; tr.add("super", n, f"supervisor {n} dropped  still unpinned")
-        drafts[n] = d
-    tr.add("super", "merge", f"supervisor 6 checked  {retries} retried")
-    answer, tally = vote(drafts, weighted=True)
-    tr.add("merge", "dedupe", f"merge      6 drafts  independent"); tr.add("dedupe", "rank", f"rank       top = {answer}  weights {json.dumps(tally)}")
+                d = {"cause": "unclear", "confidence": 0.0, "note": ""}; local.append(("super", n, f"supervisor {n} dropped  still unpinned", None, None))
+        return n, d, r, local
+
+    with ThreadPoolExecutor(max_workers=len(sl)) as ex:
+        for n, d, r, local in ex.map(one, list(sl)):
+            drafts[n] = d; retries += r
+            for a, b, s, u0, u1 in local:
+                tr.add(a, b, s, u0, u1)
+    tr.add("super", "merge", f"supervisor {len(sl)} checked  {retries} retried")
+    answer, tally = vote(drafts, weighted=True, sl=sl)
+    tr.add("merge", "dedupe", f"merge      {len(sl)} drafts  independent"); tr.add("dedupe", "rank", f"rank       by {MERGE}  top = {answer}  {json.dumps(tally)}")
     tr.add("rank", "cite", "cite       every kept draft is pinned to its slice")
     u0 = dict(llm.USAGE); text = write(answer, tally, ds.headline()); tr.add("cite", "writer", f"writer     draft  cause={answer}", u0)
     tr.add("writer", "verify", "verify     numbers pinned  ok"); tr.add("verify", "bus", f"done       cause={answer}")

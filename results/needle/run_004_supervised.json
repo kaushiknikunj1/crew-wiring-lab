@@ -1,0 +1,228 @@
+{
+ "seed": 4,
+ "truth": "pune/web/card",
+ "wiring": "supervised",
+ "answer": "pune/web/card",
+ "correct": true,
+ "calls": 8,
+ "input_tokens": 12621,
+ "output_tokens": 2264,
+ "cost_usd": 0.01796,
+ "seconds": 12.1,
+ "headline": {
+  "baseline_conversion": 0.0955,
+  "last_week_conversion": 0.0949,
+  "relative_change_pct": -0.7
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "pune/web/card",
+  "votes": {
+   "pune/web/card": 0.45
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "Across all 40 segments in this slice, success rates only drifted slightly with the largest decline being south/android/netbanking dropping from 0.7825 to 0.7758."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "No segment in this slice showed a collapse in payment success rate, with the largest drop seen in ncr/ios/card from 0.8561 to 0.8478."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show stable payment success rates, with the largest drop being mumbai/web/card from 0.8184 to 0.8111."
+   },
+   "scout5": {
+    "cause": "pune/web/card",
+    "confidence": 0.99,
+    "note": "pune/web/card experienced a massive collapse in success_rate from 0.8529 to 0.4691, representing an approximate 45% relative drop."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "The largest drop in success rate in this slice is kolkata/web/netbanking from 0.7723 to 0.6929, which is too mild to explain a blended conversion collapse."
+   }
+  },
+  "retries": 1,
+  "text": "The drop in blended checkout conversion from 0.0955 to 0.0949, representing a -0.7 percent relative change, was driven by a collapse in Pune web card payments. This single segment accounts for most of the overall decline despite minor drifts in other areas.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 3.86,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00446
+   },
+   {
+    "t": 5.13,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.01482
+   },
+   {
+    "t": 9.24,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00962
+   },
+   {
+    "t": 9.24,
+    "a": "super",
+    "b": "scout3",
+    "s": "supervisor scout3 flagged  these numbers are not in your slice: -0.01.",
+    "c": 0.0
+   },
+   {
+    "t": 9.24,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     retry  cause=unclear  conf 0.20",
+    "c": 0.008
+   },
+   {
+    "t": 9.24,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.01195
+   },
+   {
+    "t": 9.24,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=pune/web/card  conf 0.99",
+    "c": 0.00212
+   },
+   {
+    "t": 9.24,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00706
+   },
+   {
+    "t": 9.24,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  1 retried",
+    "c": 0.0
+   },
+   {
+    "t": 9.24,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 9.24,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       by evidence  top = pune/web/card  {\"pune/web/card\": 0.45}",
+    "c": 0.0
+   },
+   {
+    "t": 9.24,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 12.07,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=pune/web/card",
+    "c": 0.00034
+   },
+   {
+    "t": 12.07,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 12.07,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=pune/web/card",
+    "c": 0.0
+   }
+  ]
+ }
+}

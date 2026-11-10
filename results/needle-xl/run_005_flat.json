@@ -1,0 +1,250 @@
+{
+ "seed": 5,
+ "truth": "chennai/mweb/netbanking/t5",
+ "wiring": "flat",
+ "answer": "south/mweb/wallet/t1",
+ "correct": false,
+ "calls": 7,
+ "input_tokens": 53170,
+ "output_tokens": 1906,
+ "cost_usd": 0.04702,
+ "seconds": 28.8,
+ "headline": {
+  "baseline_conversion": 0.0947,
+  "last_week_conversion": 0.0943,
+  "relative_change_pct": -0.4
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "south/mweb/wallet/t1",
+  "votes": {
+   "south/mweb/wallet/t1": 1.0,
+   "east/ios/emi/t5": 1.0,
+   "chennai/mweb/netbanking/t5": 1.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "south/mweb/wallet/t1",
+    "confidence": 0.95,
+    "note": "south/mweb/wallet/t1 saw success_rate drop by 13.3% relative (from 0.9453 to 0.8195), the largest relative drop in this slice."
+   },
+   "scout2": {
+    "cause": "east/ios/emi/t5",
+    "confidence": 0.95,
+    "note": "east/ios/emi/t5 experienced a 13.85% relative drop in success rate from 0.7179 to 0.6185, surpassing east/ios/card/t5 (11.88% drop from 0.8574 to 0.7555)."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.15,
+    "note": "Largest relative drops in slice are bengaluru/mweb/upi/t3 (0.8782 to 0.7806, -11.1%) and mumbai/ios/card/t2 (0.8297 to 0.7416, -"
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout6": {
+    "cause": "chennai/mweb/netbanking/t5",
+    "confidence": 0.99,
+    "note": "chennai/mweb/"
+   }
+  },
+  "text": "Blended checkout conversion fell from 0.0947 to 0.0943 last week, representing a relative drop of -0.4 percent. The single segment driving most of this decline was tier-one wallet payments on mobile web in the south.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  sequential  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 2.83,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=south/mweb/wallet/t1  conf 0.95",
+    "c": 0.0067
+   },
+   {
+    "t": 2.83,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 6.62,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=east/ios/emi/t5  conf 0.95",
+    "c": 0.00685
+   },
+   {
+    "t": 6.62,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 11.84,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=unclear  conf 0.20",
+    "c": 0.00816
+   },
+   {
+    "t": 11.84,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 16.86,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=unclear  conf 0.15",
+    "c": 0.00838
+   },
+   {
+    "t": 16.86,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 22.13,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=unclear  conf 0.00",
+    "c": 0.00828
+   },
+   {
+    "t": 22.13,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 26.68,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=chennai/mweb/netbanking/t5  conf 0.99",
+    "c": 0.0083
+   },
+   {
+    "t": 26.68,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"south/mweb/wallet/t1\": 1.0, \"east/ios/emi/t5\": 1.0, \"chennai/mweb/netbanking/t5\": 1.0}",
+    "c": 0.0
+   },
+   {
+    "t": 26.68,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = south/mweb/wallet/t1",
+    "c": 0.0
+   },
+   {
+    "t": 26.68,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 28.84,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=south/mweb/wallet/t1",
+    "c": 0.00035
+   },
+   {
+    "t": 28.84,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 28.84,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=south/mweb/wallet/t1",
+    "c": 0.0
+   }
+  ]
+ }
+}

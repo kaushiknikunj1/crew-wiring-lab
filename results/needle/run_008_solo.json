@@ -1,0 +1,53 @@
+{
+ "seed": 8,
+ "truth": "hyderabad/mweb/card",
+ "wiring": "solo",
+ "answer": "hyderabad/mweb/card",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 9729,
+ "output_tokens": 135,
+ "cost_usd": 0.0078,
+ "seconds": 3.9,
+ "headline": {
+  "baseline_conversion": 0.0933,
+  "last_week_conversion": 0.0929,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "hyderabad/mweb/card",
+  "confidence": 0.99,
+  "note": "hyderabad/mweb/card experienced a severe drop in success rate from 0.8166 to 0.4491, representing a relative collapse of approximately 45%. Other notable drops such as east/ios/netbanking (0.7915 to 0.6823) and west/web/wallet (0.9188 to 0.8137) were far smaller in magnitude.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 3.84,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=hyderabad/mweb/card  conf 0.99",
+    "c": 0.0078
+   },
+   {
+    "t": 3.85,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 3.85,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=hyderabad/mweb/card",
+    "c": 0.0
+   }
+  ]
+ }
+}

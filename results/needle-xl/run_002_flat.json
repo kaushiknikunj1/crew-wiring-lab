@@ -1,0 +1,248 @@
+{
+ "seed": 2,
+ "truth": "west/mweb/card/t2",
+ "wiring": "flat",
+ "answer": "west/mweb/card/t2",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 52789,
+ "output_tokens": 1816,
+ "cost_usd": 0.0464,
+ "seconds": 32.1,
+ "headline": {
+  "baseline_conversion": 0.0966,
+  "last_week_conversion": 0.0961,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "west/mweb/card/t2",
+  "votes": {
+   "west/mweb/card/t2": 2.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout2": {
+    "cause": "west/mweb/card/t2",
+    "confidence": 0.99,
+    "note": "west/mweb/card/t2 success rate collapsed from 0.8301 to 0.4566, representing by far the largest relative fall in the slice."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.15,
+    "note": "Largest drop in this slice was hyderabad/ios/upi/t2 from 0.8741 to 0.7531, which does not constitute a full collapse compared to teammate findings."
+   },
+   "scout6": {
+    "cause": "west/mweb/card/t2",
+    "confidence": 0.95,
+    "note": "Teammate scout2 identified west/mweb/card/t2 collapsing from 0.8301 to 0.4566, whereas in this slice the largest relative drop was chennai/mweb/upi/t2 from 0.9160 to 0.7881."
+   }
+  },
+  "text": "The segment responsible for the collapse is card payments on mobile web in the west region for tier 2. This issue caused blended checkout conversion to drop from 0.0966 to 0.0961 last week, representing a relative change of -0.5 percent.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  sequential  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 5.59,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=unclear  conf 0.20",
+    "c": 0.00796
+   },
+   {
+    "t": 5.59,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 8.46,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=west/mweb/card/t2  conf 0.99",
+    "c": 0.00668
+   },
+   {
+    "t": 8.46,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 14.3,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=unclear  conf 0.10",
+    "c": 0.00811
+   },
+   {
+    "t": 14.3,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 19.94,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=unclear  conf 0.00",
+    "c": 0.00835
+   },
+   {
+    "t": 19.94,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 24.95,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=unclear  conf 0.15",
+    "c": 0.0079
+   },
+   {
+    "t": 24.95,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 28.96,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=west/mweb/card/t2  conf 0.95",
+    "c": 0.00706
+   },
+   {
+    "t": 28.96,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"west/mweb/card/t2\": 2.0}",
+    "c": 0.0
+   },
+   {
+    "t": 28.96,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = west/mweb/card/t2",
+    "c": 0.0
+   },
+   {
+    "t": 28.96,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 32.12,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=west/mweb/card/t2",
+    "c": 0.00034
+   },
+   {
+    "t": 32.12,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 32.12,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=west/mweb/card/t2",
+    "c": 0.0
+   }
+  ]
+ }
+}

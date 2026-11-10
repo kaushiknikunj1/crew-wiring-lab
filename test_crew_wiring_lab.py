@@ -7,6 +7,8 @@ os.environ["LLM_PROVIDER"] = "none"
 import crew
 import llm
 from data import CAUSES, generate, slices
+import needle
+import tasks
 
 
 class DataTests(unittest.TestCase):
@@ -44,10 +46,43 @@ class CrewTests(unittest.TestCase):
         ds = generate(5)
         for name, fn in crew.WIRINGS.items():
             res = fn(ds)
-            self.assertIn(res["answer"], crew.LABELS, name)
+            self.assertIn(res["answer"], set(CAUSES) | {"unclear"}, name)
             self.assertTrue(res["trace"] and res["trace"][-1]["s"].startswith("done"), name)
         self.assertEqual(llm.USAGE["calls"], 0)
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class NeedleTests(unittest.TestCase):
+    def test_needle_rule_scouts_find_it(self):
+        ds = needle.generate(3); sl = needle.slices(ds)
+        found = [needle.rule_scout(n, s)["cause"] for n, s in sl.items()]
+        self.assertIn(ds.cause, found)
+        self.assertEqual(sum(c != "unclear" for c in found), 1)
+
+    def test_needle_supervisor_rejects_foreign_segment(self):
+        crew.set_task(tasks.NEEDLE)
+        try:
+            sl = needle.slices(needle.generate(3))
+            other = sl["scout6"]["table"][0]["segment"]
+            self.assertIsNotNone(crew.supervisor_check({"cause": other, "confidence": 0.9, "note": ""}, sl["scout1"]))
+            for name, fn in crew.WIRINGS.items():
+                res = fn(needle.generate(3))
+                self.assertEqual(res["answer"], needle.generate(3).cause, name)
+        finally:
+            crew.set_task(tasks.PLANTED)
+
+
+class MergeTests(unittest.TestCase):
+    def test_evidence_rank_beats_confidence_tie(self):
+        crew.set_task(tasks.NEEDLE)
+        try:
+            ds = needle.generate(3); sl = needle.slices(ds)
+            holder = [k for k, v in sl.items() if any(r["segment"] == ds.cause for r in v["table"])][0]
+            other = [k for k in sl if k != holder][0]; rival = sl[other]["table"][0]["segment"]
+            drafts = {holder: {"cause": ds.cause, "confidence": 0.95, "note": ""}, other: {"cause": rival, "confidence": 0.95, "note": ""}}
+            self.assertEqual(crew.vote(drafts, weighted=True, sl=sl)[0], ds.cause)
+        finally:
+            crew.set_task(tasks.PLANTED)

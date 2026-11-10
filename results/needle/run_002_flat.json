@@ -1,0 +1,248 @@
+{
+ "seed": 2,
+ "truth": "north/ios/emi",
+ "wiring": "flat",
+ "answer": "north/ios/emi",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 11584,
+ "output_tokens": 1278,
+ "cost_usd": 0.01348,
+ "seconds": 28.0,
+ "headline": {
+  "baseline_conversion": 0.0957,
+  "last_week_conversion": 0.0954,
+  "relative_change_pct": -0.3
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "north/ios/emi",
+  "votes": {
+   "north/ios/emi": 4.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "north/ios/emi",
+    "confidence": 0.95,
+    "note": "Payment success rate for north/ios/emi collapsed from 0.7224 to 0.3973, representing an approximate 45% drop while other segments remained relatively flat."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice experienced a collapse; the largest success rate decline was east/web/netbanking from 0.7708 to 0.7638."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "north/ios/emi",
+    "confidence": 0.95,
+    "note": "In our slice, the largest drop was mumbai/ios/emi from 0.7160 to 0.6365, confirming teammate scout1's identified collapse in north/ios/emi (0.7224 to 0.3973) is the primary cause."
+   },
+   "scout5": {
+    "cause": "north/ios/emi",
+    "confidence": 0.95,
+    "note": "In this slice, the largest drop was hyderabad/ios/card from 0.8621 to 0.7521, confirming teammate scout1's identified collapse in north/ios/emi."
+   },
+   "scout6": {
+    "cause": "north/ios/emi",
+    "confidence": 0.95,
+    "note": "In this slice, the largest drop was kolkata/ios/emi from 0.6989 to 0.6285, confirming teammate scout1's finding that north/ios/emi collapsed."
+   }
+  },
+  "text": "The segment responsible for the decline is North iOS EMI. Its payment success rate collapse drove the drop in blended checkout conversion from a baseline of 0.0957 down to 0.0954 last week, representing a -0.3 relative change percent.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  sequential  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 5.36,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=north/ios/emi  conf 0.95",
+    "c": 0.00212
+   },
+   {
+    "t": 5.36,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 9.66,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=unclear  conf 0.10",
+    "c": 0.00214
+   },
+   {
+    "t": 9.66,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 15.24,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=unclear  conf 0.20",
+    "c": 0.00297
+   },
+   {
+    "t": 15.24,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 18.63,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=north/ios/emi  conf 0.95",
+    "c": 0.00183
+   },
+   {
+    "t": 18.63,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 21.23,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=north/ios/emi  conf 0.95",
+    "c": 0.00176
+   },
+   {
+    "t": 21.23,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 25.05,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=north/ios/emi  conf 0.95",
+    "c": 0.00233
+   },
+   {
+    "t": 25.05,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"north/ios/emi\": 4.0}",
+    "c": 0.0
+   },
+   {
+    "t": 25.05,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = north/ios/emi",
+    "c": 0.0
+   },
+   {
+    "t": 25.05,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 28.0,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=north/ios/emi",
+    "c": 0.00032
+   },
+   {
+    "t": 28.0,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 28.0,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=north/ios/emi",
+    "c": 0.0
+   }
+  ]
+ }
+}

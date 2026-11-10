@@ -1,0 +1,53 @@
+{
+ "seed": 3,
+ "truth": "bengaluru/ios/emi/t5",
+ "wiring": "solo",
+ "answer": "bengaluru/ios/emi/t5",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 51160,
+ "output_tokens": 516,
+ "cost_usd": 0.04031,
+ "seconds": 8.7,
+ "headline": {
+  "baseline_conversion": 0.0965,
+  "last_week_conversion": 0.096,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "bengaluru/ios/emi/t5",
+  "confidence": 0.3,
+  "note": "",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 8.69,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=bengaluru/ios/emi/t5  conf 0.30",
+    "c": 0.04031
+   },
+   {
+    "t": 8.72,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 8.72,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=bengaluru/ios/emi/t5",
+    "c": 0.0
+   }
+  ]
+ }
+}

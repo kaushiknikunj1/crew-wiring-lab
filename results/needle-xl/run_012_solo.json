@@ -1,0 +1,53 @@
+{
+ "seed": 12,
+ "truth": "chennai/ios/emi/t1",
+ "wiring": "solo",
+ "answer": "unclear",
+ "correct": false,
+ "calls": 1,
+ "input_tokens": 51150,
+ "output_tokens": 516,
+ "cost_usd": 0.0403,
+ "seconds": 6.1,
+ "headline": {
+  "baseline_conversion": 0.096,
+  "last_week_conversion": 0.0956,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "unclear",
+  "confidence": 0.0,
+  "note": "",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 6.11,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=unclear  conf 0.00",
+    "c": 0.0403
+   },
+   {
+    "t": 6.14,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 6.14,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=unclear",
+    "c": 0.0
+   }
+  ]
+ }
+}

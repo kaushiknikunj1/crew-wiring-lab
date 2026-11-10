@@ -1,0 +1,214 @@
+{
+ "seed": 6,
+ "truth": "pune/android/netbanking/t4",
+ "wiring": "supervised",
+ "answer": "pune/android/netbanking/t4",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 52240,
+ "output_tokens": 2160,
+ "cost_usd": 0.04728,
+ "seconds": 8.5,
+ "headline": {
+  "baseline_conversion": 0.0958,
+  "last_week_conversion": 0.0954,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "pune/android/netbanking/t4",
+  "votes": {
+   "pune/android/netbanking/t4": 0.99
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.4,
+    "note": "Multiple segments in this slice show ~10-14% relative drops in success_rate, such as bengaluru/android/upi/t1 (0.8809 to 0.7612), bengaluru/android/emi/t4 (0.7011 to 0.6058), and bengaluru/mweb/emi/t3 (0.7092 to 0.6159), with none showing a total collapse."
+   },
+   "scout5": {
+    "cause": "pune/android/netbanking/t4",
+    "confidence": 0.99,
+    "note": "Success rate collapsed from 0.7665 to 0.4216, representing a ~45% relative drop, while other segments in this slice remained relatively stable."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   }
+  },
+  "retries": 0,
+  "text": "The segment responsible for the collapse in payment success rate is Pune users on Android using netbanking in tier 4. This drop caused the blended checkout conversion to fall from a baseline of 0.0958 to 0.0954 last week, representing a -0.5 relative percent change.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 5.53,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.03078
+   },
+   {
+    "t": 5.53,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.02282
+   },
+   {
+    "t": 5.89,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.04692
+   },
+   {
+    "t": 5.89,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.40",
+    "c": 0.00719
+   },
+   {
+    "t": 5.89,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=pune/android/netbanking/t4  conf 0.99",
+    "c": 0.01487
+   },
+   {
+    "t": 5.89,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.03889
+   },
+   {
+    "t": 5.89,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 5.89,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 5.89,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = pune/android/netbanking/t4  weights {\"pune/android/netbanking/t4\": 0.99}",
+    "c": 0.0
+   },
+   {
+    "t": 5.89,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 8.53,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=pune/android/netbanking/t4",
+    "c": 0.00036
+   },
+   {
+    "t": 8.53,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 8.53,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=pune/android/netbanking/t4",
+    "c": 0.0
+   }
+  ]
+ }
+}

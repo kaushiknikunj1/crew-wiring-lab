@@ -5,10 +5,10 @@
  "answer": "card_bin_block",
  "correct": true,
  "calls": 7,
- "input_tokens": 4063,
- "output_tokens": 1046,
- "cost_usd": 0.00697,
- "seconds": 26.6,
+ "input_tokens": 4094,
+ "output_tokens": 991,
+ "cost_usd": 0.00679,
+ "seconds": 7.3,
  "headline": {
   "baseline_conversion": 0.0683,
   "last_week_conversion": 0.0618,
@@ -24,36 +24,36 @@
    "scout1": {
     "cause": "unclear",
     "confidence": 0.4,
-    "note": "Payment success rate fell uniformly across Android (-9.5%), iOS (-9.2%), and web (-9.4%), pointing to a payment issue, but this slice cannot distinguish between UPI gateway outage and card BIN block."
+    "note": "Payment success rate dropped uniformly across all platforms (~9.2% to 9.5%), but platform data cannot distinguish between payment method issues like upi_gateway_outage or card_bin_block."
    },
    "scout2": {
     "cause": "card_bin_block",
     "confidence": 0.95,
-    "note": "Card payment success rate dropped sharply by 36.3% from 0.8361 to 0.5322, while success rates for UPI, netbanking, and wallet remained virtually unchanged."
+    "note": "Card payment success rate dropped 36.3% from 0.8361 to 0.5322, while other payment methods remained essentially unchanged."
    },
    "scout3": {
     "cause": "unclear",
     "confidence": 0.4,
-    "note": "Payment success rate fell by ~9.5% across all traffic sources (organic down 9.4%, paid down 9.5%, referral down 9.5%) while other rates remained flat, indicating a payment-stage issue that cannot be distinguished between UPI or card causes without payment method data."
+    "note": "Payment success rate fell uniformly across organic (-9.4%), paid (-9.5%), and referral (-9.5%), indicating a downstream payment failure, but the specific payment method cannot be determined from this slice."
    },
    "scout4": {
     "cause": "unclear",
     "confidence": 0.4,
-    "note": "Payment success rate fell 9.4% (0.8715 to 0.7893) while checkout and attempt rates remained flat, but this slice lacks payment method breakdown to distinguish UPI from card issues."
+    "note": "Overall conversion dropped 9.5% driven by a 9.4% decline in payment success_rate (from 0.8715 to 0.7893), but the slice does not break down payment methods to distinguish between UPI or card issues."
    },
    "scout5": {
     "cause": "unclear",
     "confidence": 0.2,
-    "note": "Daily blended conversion dropped noticeably from ~0.0680 on day 21 to ~0.0614-0.0624 from day 22 onwards, but overall blended data cannot isolate platform, payment method, or traffic source causes."
+    "note": "Daily conversion dropped from ~0.0680 on day 21 to 0.0620 on day 22 and remained around 0.0610-0.0624 through day 28, but blended data alone cannot distinguish the underlying driver."
    },
    "scout6": {
     "cause": "unclear",
-    "confidence": 0.1,
-    "note": "Overall conversion dropped 9.5% from 0.0683 to 0.0618, but the headline slice lacks segment breakdowns to isolate the root cause."
+    "confidence": 0.2,
+    "note": "Overall conversion dropped by 9.5% from 0.0683 to 0.0618, but the headline slice lacks dimension breakdowns to isolate the root cause."
    }
   },
   "retries": 0,
-  "text": "Conversion fell last week because of a card BIN block that prevented transactions from going through. This caused the conversion rate to drop from the baseline of 0.0683 to 0.0618, representing a -9.5% relative change.",
+  "text": "Blended checkout conversion fell last week because blocks were placed on certain card bank identification numbers. This caused conversion to drop by 9.5% relative to the baseline, declining from 0.0683 to 0.0618.",
   "trace": [
    {
     "t": 0.0,
@@ -73,7 +73,7 @@
     "t": 0.0,
     "a": "decompose",
     "b": "route",
-    "s": "route      6 scouts  isolated",
+    "s": "route      6 scouts  parallel  isolated",
     "c": 0.0
    },
    {
@@ -119,91 +119,91 @@
     "c": 0.0
    },
    {
-    "t": 4.89,
+    "t": 3.98,
     "a": "scout1",
     "b": "super",
     "s": "scout1     returned  slice only  cause=unclear  conf 0.40",
-    "c": 0.00128
+    "c": 0.00497
    },
    {
-    "t": 7.1,
+    "t": 3.98,
     "a": "scout2",
     "b": "super",
     "s": "scout2     returned  slice only  cause=card_bin_block  conf 0.95",
-    "c": 0.001
+    "c": 0.00159
    },
    {
-    "t": 11.58,
+    "t": 4.09,
     "a": "scout3",
     "b": "super",
     "s": "scout3     returned  slice only  cause=unclear  conf 0.40",
-    "c": 0.00164
+    "c": 0.0065
    },
    {
-    "t": 15.55,
+    "t": 4.09,
     "a": "scout4",
     "b": "super",
     "s": "scout4     returned  slice only  cause=unclear  conf 0.40",
-    "c": 0.0011
+    "c": 0.00062
    },
    {
-    "t": 19.2,
+    "t": 4.09,
     "a": "scout5",
     "b": "super",
     "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
-    "c": 0.00082
+    "c": 0.00375
    },
    {
-    "t": 23.54,
+    "t": 4.09,
     "a": "scout6",
     "b": "super",
-    "s": "scout6     returned  slice only  cause=unclear  conf 0.10",
-    "c": 0.00084
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.0025
    },
    {
-    "t": 23.54,
+    "t": 4.09,
     "a": "super",
     "b": "merge",
     "s": "supervisor 6 checked  0 retried",
     "c": 0.0
    },
    {
-    "t": 23.54,
+    "t": 4.09,
     "a": "merge",
     "b": "dedupe",
     "s": "merge      6 drafts  independent",
     "c": 0.0
    },
    {
-    "t": 23.54,
+    "t": 4.09,
     "a": "dedupe",
     "b": "rank",
     "s": "rank       top = card_bin_block  weights {\"card_bin_block\": 0.95}",
     "c": 0.0
    },
    {
-    "t": 23.54,
+    "t": 4.09,
     "a": "rank",
     "b": "cite",
     "s": "cite       every kept draft is pinned to its slice",
     "c": 0.0
    },
    {
-    "t": 26.64,
+    "t": 7.27,
     "a": "cite",
     "b": "writer",
     "s": "writer     draft  cause=card_bin_block",
     "c": 0.00029
    },
    {
-    "t": 26.64,
+    "t": 7.27,
     "a": "writer",
     "b": "verify",
     "s": "verify     numbers pinned  ok",
     "c": 0.0
    },
    {
-    "t": 26.64,
+    "t": 7.27,
     "a": "verify",
     "b": "bus",
     "s": "done       cause=card_bin_block",

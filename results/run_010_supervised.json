@@ -4,11 +4,11 @@
  "wiring": "supervised",
  "answer": "pricing_change",
  "correct": true,
- "calls": 8,
- "input_tokens": 4810,
- "output_tokens": 1378,
- "cost_usd": 0.00877,
- "seconds": 30.7,
+ "calls": 7,
+ "input_tokens": 4109,
+ "output_tokens": 1445,
+ "cost_usd": 0.0085,
+ "seconds": 8.3,
  "headline": {
   "baseline_conversion": 0.0684,
   "last_week_conversion": 0.0606,
@@ -18,42 +18,42 @@
   "wiring": "supervised",
   "answer": "pricing_change",
   "votes": {
-   "pricing_change": 1.8
+   "pricing_change": 1.85
   },
   "drafts": {
    "scout1": {
     "cause": "pricing_change",
     "confidence": 0.95,
-    "note": "Checkout rate dropped uniformly across all platforms by roughly 11% (Android -11.2%, iOS -11.0%, Web -11.0%) while attempt and success rates remained essentially flat."
+    "note": "Checkout rate dropped by ~11% across all platforms (Android -11.2%, iOS -11.0%, Web -11.0%) while attempt and success rates remained flat."
    },
    "scout2": {
     "cause": "unclear",
-    "confidence": 0.4,
-    "note": "Checkout rate dropped uniformly by ~11% across all payment methods (UPI -11.2%, Card -10.9%, Netbanking -11.1%, Wallet -11.0%) while attempt and success rates remained flat, which is consistent with either a pricing change or platform-specific checkout latency."
+    "confidence": 0.35,
+    "note": "Checkout-start rate dropped uniformly by ~11% across all payment methods (e.g., UPI -11.2%, card -10.9%) while attempt and success rates stayed flat, which does not isolate platform- or source-specific causes."
    },
    "scout3": {
     "cause": "pricing_change",
-    "confidence": 0.85,
-    "note": "Checkout-start rate dropped consistently across all traffic sources (organic -10.8%, paid -11.5%, referral -11.3%) while attempt and success rates remained flat."
+    "confidence": 0.9,
+    "note": "Checkout-start rate dropped uniformly across all traffic sources (organic by -10.8%, paid by -11.5%, and referral by -11.3%) while attempt and success rates remained flat."
    },
    "scout4": {
     "cause": "unclear",
     "confidence": 0.4,
-    "note": "Overall checkout rate fell by 11.1% (from 11.08% to 9.85%) while attempt and success rates stayed flat, but without platform or channel breakdowns it is impossible to distinguish between a pricing change and Android checkout latency."
+    "note": "Overall checkout-start rate dropped 11.1% (from 0.1108 to 0.0985) while attempt and success rates were stable, but platform or traffic source splits are needed to identify the root cause."
    },
    "scout5": {
     "cause": "unclear",
     "confidence": 0.2,
-    "note": "Daily conversion dropped from 0.0691 on day 21 to 0.0608 on day 22 and stayed around 0.0601-0.0611 through day 28, but blended conversion data alone cannot isolate the underlying cause across platform, payment method, or traffic source."
+    "note": "Blended conversion dropped from ~0.0685 across days 1-21 to ~0.0605 starting on day 22, but without segment breakdowns the root cause cannot be determined."
    },
    "scout6": {
     "cause": "unclear",
-    "confidence": 0.15,
-    "note": "Overall checkout conversion dropped 11.4% from 0.0684 to 0.0606, but the headline metric alone lacks segment-level detail to pinpoint the specific cause."
+    "confidence": 0.1,
+    "note": "Blended conversion fell by 11.4% from 0.0684 to 0.0606, but the headline slice provides no breakdown by platform, source, or payment funnel to identify the root cause."
    }
   },
-  "retries": 1,
-  "text": "Conversion fell last week because of a pricing change. As a result, the conversion rate dropped from the baseline of 0.0684 to 0.0606 last week, representing a relative change of -11.4 percent.",
+  "retries": 0,
+  "text": "Blended checkout conversion fell last week due to a pricing change. This caused the conversion rate to drop from a baseline of 0.0684 to 0.0606, representing a relative change of -11.4 percent.",
   "trace": [
    {
     "t": 0.0,
@@ -73,7 +73,7 @@
     "t": 0.0,
     "a": "decompose",
     "b": "route",
-    "s": "route      6 scouts  isolated",
+    "s": "route      6 scouts  parallel  isolated",
     "c": 0.0
    },
    {
@@ -119,105 +119,91 @@
     "c": 0.0
    },
    {
-    "t": 2.32,
+    "t": 3.62,
     "a": "scout1",
     "b": "super",
     "s": "scout1     returned  slice only  cause=pricing_change  conf 0.95",
-    "c": 0.00084
+    "c": 0.00224
    },
    {
-    "t": 8.53,
+    "t": 4.79,
     "a": "scout2",
     "b": "super",
-    "s": "scout2     returned  slice only  cause=unclear  conf 0.40",
-    "c": 0.00219
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.35",
+    "c": 0.00645
    },
    {
-    "t": 13.56,
+    "t": 5.4,
     "a": "scout3",
     "b": "super",
-    "s": "scout3     returned  slice only  cause=pricing_change  conf 0.85",
-    "c": 0.00173
+    "s": "scout3     returned  slice only  cause=pricing_change  conf 0.90",
+    "c": 0.00822
    },
    {
-    "t": 18.38,
+    "t": 5.4,
     "a": "scout4",
     "b": "super",
     "s": "scout4     returned  slice only  cause=unclear  conf 0.40",
-    "c": 0.00123
+    "c": 0.00111
    },
    {
-    "t": 22.68,
+    "t": 5.4,
     "a": "scout5",
     "b": "super",
     "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
-    "c": 0.00118
+    "c": 0.00334
    },
    {
-    "t": 22.68,
-    "a": "super",
-    "b": "scout5",
-    "s": "supervisor scout5 flagged  these numbers are not in your slice: 6.05.",
-    "c": 0.0
-   },
-   {
-    "t": 25.62,
-    "a": "scout5",
-    "b": "super",
-    "s": "scout5     retry  cause=unclear  conf 0.20",
-    "c": 0.00089
-   },
-   {
-    "t": 28.78,
+    "t": 5.4,
     "a": "scout6",
     "b": "super",
-    "s": "scout6     returned  slice only  cause=unclear  conf 0.15",
-    "c": 0.00043
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00443
    },
    {
-    "t": 28.78,
+    "t": 5.4,
     "a": "super",
     "b": "merge",
-    "s": "supervisor 6 checked  1 retried",
+    "s": "supervisor 6 checked  0 retried",
     "c": 0.0
    },
    {
-    "t": 28.78,
+    "t": 5.4,
     "a": "merge",
     "b": "dedupe",
     "s": "merge      6 drafts  independent",
     "c": 0.0
    },
    {
-    "t": 28.78,
+    "t": 5.4,
     "a": "dedupe",
     "b": "rank",
-    "s": "rank       top = pricing_change  weights {\"pricing_change\": 1.8}",
+    "s": "rank       top = pricing_change  weights {\"pricing_change\": 1.85}",
     "c": 0.0
    },
    {
-    "t": 28.78,
+    "t": 5.4,
     "a": "rank",
     "b": "cite",
     "s": "cite       every kept draft is pinned to its slice",
     "c": 0.0
    },
    {
-    "t": 30.72,
+    "t": 8.32,
     "a": "cite",
     "b": "writer",
     "s": "writer     draft  cause=pricing_change",
     "c": 0.00028
    },
    {
-    "t": 30.72,
+    "t": 8.32,
     "a": "writer",
     "b": "verify",
     "s": "verify     numbers pinned  ok",
     "c": 0.0
    },
    {
-    "t": 30.72,
+    "t": 8.32,
     "a": "verify",
     "b": "bus",
     "s": "done       cause=pricing_change",

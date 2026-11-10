@@ -1,0 +1,214 @@
+{
+ "seed": 11,
+ "truth": "mumbai/ios/upi",
+ "wiring": "supervised",
+ "answer": "mumbai/ios/upi",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 10816,
+ "output_tokens": 1908,
+ "cost_usd": 0.01527,
+ "seconds": 9.2,
+ "headline": {
+  "baseline_conversion": 0.0982,
+  "last_week_conversion": 0.0978,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "mumbai/ios/upi",
+  "votes": {
+   "mumbai/ios/upi": 0.45
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "mumbai/ios/upi",
+    "confidence": 0.95,
+    "note": "mumbai/ios/upi success_rate collapsed from 0.8850 to 0.4868 (a relative decline of ~45%), far exceeding any other segment."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice experienced a collapse in payment success rate, with all changes remaining within 1% of base."
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show stable payment success rates with minimal variance (largest drop is chennai/android/upi falling slightly from 0.8872 to 0.8794)."
+   }
+  },
+  "retries": 0,
+  "text": "The segment that collapsed and drove the overall drop in checkout conversion from 0.0982 to 0.0978, representing a 0.5% decline, is UPI payments on iOS in Mumbai. This single segment accounts for the vast majority of the fall despite minor drifts elsewhere.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 5.14,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.00676
+   },
+   {
+    "t": 5.52,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.01203
+   },
+   {
+    "t": 5.89,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.01492
+   },
+   {
+    "t": 5.89,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=mumbai/ios/upi  conf 0.95",
+    "c": 0.00164
+   },
+   {
+    "t": 5.89,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00916
+   },
+   {
+    "t": 5.89,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.0039
+   },
+   {
+    "t": 5.89,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 5.89,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 5.89,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       by evidence  top = mumbai/ios/upi  {\"mumbai/ios/upi\": 0.45}",
+    "c": 0.0
+   },
+   {
+    "t": 5.89,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 9.18,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=mumbai/ios/upi",
+    "c": 0.00035
+   },
+   {
+    "t": 9.18,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 9.18,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=mumbai/ios/upi",
+    "c": 0.0
+   }
+  ]
+ }
+}

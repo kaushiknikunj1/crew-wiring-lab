@@ -1,0 +1,53 @@
+{
+ "seed": 12,
+ "truth": "chennai/ios/netbanking",
+ "wiring": "solo",
+ "answer": "chennai/ios/netbanking",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 9734,
+ "output_tokens": 353,
+ "cost_usd": 0.00862,
+ "seconds": 4.6,
+ "headline": {
+  "baseline_conversion": 0.0964,
+  "last_week_conversion": 0.0959,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "chennai/ios/netbanking",
+  "confidence": 1.0,
+  "note": "Payment success rate for chennai/ios/netbanking collapsed from 0.7996 to 0.4398, representing a 45.0% relative drop. All other segments saw stable metrics or significantly smaller fluctuations.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 4.61,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=chennai/ios/netbanking  conf 1.00",
+    "c": 0.00862
+   },
+   {
+    "t": 4.62,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 4.62,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=chennai/ios/netbanking",
+    "c": 0.0
+   }
+  ]
+ }
+}

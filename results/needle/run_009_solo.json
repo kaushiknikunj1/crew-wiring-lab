@@ -1,0 +1,53 @@
+{
+ "seed": 9,
+ "truth": "south/web/emi",
+ "wiring": "solo",
+ "answer": "south/web/emi",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 9731,
+ "output_tokens": 324,
+ "cost_usd": 0.00851,
+ "seconds": 4.5,
+ "headline": {
+  "baseline_conversion": 0.0951,
+  "last_week_conversion": 0.0946,
+  "relative_change_pct": -0.6
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "south/web/emi",
+  "confidence": 1.0,
+  "note": "The segment south/web/emi experienced a severe collapse in payment success rate, dropping from 0.6921 to 0.3807 (a relative decline of ~45%). All other segments remained relatively stable, with only minor drifts in comparison.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 4.54,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=south/web/emi  conf 1.00",
+    "c": 0.00851
+   },
+   {
+    "t": 4.55,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 4.55,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=south/web/emi",
+    "c": 0.0
+   }
+  ]
+ }
+}

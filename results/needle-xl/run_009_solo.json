@@ -1,0 +1,53 @@
+{
+ "seed": 9,
+ "truth": "west/web/upi/t3",
+ "wiring": "solo",
+ "answer": "west/web/upi/t3",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 51157,
+ "output_tokens": 515,
+ "cost_usd": 0.0403,
+ "seconds": 7.6,
+ "headline": {
+  "baseline_conversion": 0.0957,
+  "last_week_conversion": 0.0952,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "west/web/upi/t3",
+  "confidence": 0.3,
+  "note": "",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 7.57,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=west/web/upi/t3  conf 0.30",
+    "c": 0.0403
+   },
+   {
+    "t": 7.6,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 7.6,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=west/web/upi/t3",
+    "c": 0.0
+   }
+  ]
+ }
+}

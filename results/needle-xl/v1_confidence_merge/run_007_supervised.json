@@ -1,0 +1,216 @@
+{
+ "seed": 7,
+ "truth": "north/mweb/upi/t2",
+ "wiring": "supervised",
+ "answer": "north/mweb/upi/t2",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 52301,
+ "output_tokens": 1545,
+ "cost_usd": 0.04502,
+ "seconds": 8.9,
+ "headline": {
+  "baseline_conversion": 0.096,
+  "last_week_conversion": 0.0955,
+  "relative_change_pct": -0.6
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "north/mweb/upi/t2",
+  "votes": {
+   "north/mweb/upi/t2": 0.95,
+   "bengaluru/ios/netbanking/t5": 0.95,
+   "kolkata/web/wallet/t1": 0.35
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "north/mweb/upi/t2",
+    "confidence": 0.95,
+    "note": "Success rate collapsed from 0.9244 to 0.5084 (a ~45% relative drop), whereas other segments had minimal or no change."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "bengaluru/ios/netbanking/t5",
+    "confidence": 0.95,
+    "note": "bengaluru/ios/netbanking/t5 success rate dropped significantly from 0.7838 to 0.6901 (an 11.95% relative decline), slightly larger than bengaluru/mweb/upi/t2 which dropped from 0.9161 to 0.8111 (11.46%)."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "Multiple segments experienced moderate drops in success_rate (e.g., pune/ios/wallet/t1 fell from 0.9524 to 0.8206 and hyderabad/ios/emi/t5 from 0.7066 to 0.6166), but no single catastrophic collapse is clearly identified within this slice."
+   },
+   "scout6": {
+    "cause": "kolkata/web/wallet/t1",
+    "confidence": 0.35,
+    "note": "kolkata/web/wallet/t1 saw success_rate drop 13.4% from 0.9326 to 0.8072, but multiple segments in this slice show ~12-14% drops, making the single primary driver unclear across the full dataset."
+   }
+  },
+  "retries": 0,
+  "text": "The single segment responsible for the collapse in payment success rate is north mobile web UPI tier two users. This drop drove the blended checkout conversion down from a baseline of 0.096 to 0.0955 last week, representing a relative decline of -0.6 percent.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 4.79,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=north/mweb/upi/t2  conf 0.95",
+    "c": 0.02866
+   },
+   {
+    "t": 5.51,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.04465
+   },
+   {
+    "t": 5.51,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.0367
+   },
+   {
+    "t": 5.51,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=bengaluru/ios/netbanking/t5  conf 0.95",
+    "c": 0.02101
+   },
+   {
+    "t": 5.51,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.01387
+   },
+   {
+    "t": 5.51,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=kolkata/web/wallet/t1  conf 0.35",
+    "c": 0.00693
+   },
+   {
+    "t": 5.51,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 5.51,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 5.51,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = north/mweb/upi/t2  weights {\"north/mweb/upi/t2\": 0.95, \"bengaluru/ios/netbanking/t5\": 0.95, \"kolkata/web/wallet/t1\": 0.35}",
+    "c": 0.0
+   },
+   {
+    "t": 5.51,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 8.91,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=north/mweb/upi/t2",
+    "c": 0.00037
+   },
+   {
+    "t": 8.91,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 8.91,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=north/mweb/upi/t2",
+    "c": 0.0
+   }
+  ]
+ }
+}

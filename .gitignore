@@ -3,3 +3,4 @@ __pycache__/
 .env
 lab_run.log
 lab_*.log
+fill_readme.py

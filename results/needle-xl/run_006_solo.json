@@ -1,0 +1,53 @@
+{
+ "seed": 6,
+ "truth": "pune/android/netbanking/t4",
+ "wiring": "solo",
+ "answer": "unclear",
+ "correct": false,
+ "calls": 1,
+ "input_tokens": 51125,
+ "output_tokens": 515,
+ "cost_usd": 0.04027,
+ "seconds": 7.2,
+ "headline": {
+  "baseline_conversion": 0.0958,
+  "last_week_conversion": 0.0954,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "unclear",
+  "confidence": 0.0,
+  "note": "",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 7.12,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=unclear  conf 0.00",
+    "c": 0.04027
+   },
+   {
+    "t": 7.16,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 7.16,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=unclear",
+    "c": 0.0
+   }
+  ]
+ }
+}

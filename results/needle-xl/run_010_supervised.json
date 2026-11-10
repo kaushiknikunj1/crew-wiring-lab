@@ -1,0 +1,230 @@
+{
+ "seed": 10,
+ "truth": "east/web/wallet/t3",
+ "wiring": "supervised",
+ "answer": "east/web/wallet/t3",
+ "correct": true,
+ "calls": 8,
+ "input_tokens": 61006,
+ "output_tokens": 1560,
+ "cost_usd": 0.0516,
+ "seconds": 11.5,
+ "headline": {
+  "baseline_conversion": 0.0964,
+  "last_week_conversion": 0.0959,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "east/web/wallet/t3",
+  "votes": {
+   "south/android/wallet/t1": 0.13,
+   "east/web/wallet/t3": 0.45,
+   "ncr/ios/wallet/t5": 0.124
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "south/android/wallet/t1",
+    "confidence": 0.95,
+    "note": "south/android/wallet/t1 success rate fell significantly from 0.9297 to 0.8085 (a ~13.0% relative drop), the largest relative drop in the slice."
+   },
+   "scout2": {
+    "cause": "east/web/wallet/t3",
+    "confidence": 0.95,
+    "note": "east/web/wallet/t3 success_rate collapsed from 0.9343 to 0.5139 (a 45% relative drop), far exceeding any other drop in this slice."
+   },
+   "scout3": {
+    "cause": "ncr/ios/wallet/t5",
+    "confidence": 0.45,
+    "note": "Multiple segments in this slice saw ~11-12% drops in success_rate, with ncr/ios/wallet/t5 falling 12.4% from 0.9396 to 0.8231, though central/mweb/upi/t2 and ncr/ios/upi/t4 also dropped significantly."
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "No segment collapsed in this slice; the largest drops are mumbai/web/upi/t3 (0.9117 to 0.7997), mumbai/web/emi/t1 (0.6912 to 0.6137), and bengaluru/android/netbanking/t4 (0.7887 to 0.6951), none of which represent a true collapse explaining the overall fall."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   }
+  },
+  "retries": 1,
+  "text": "Blended checkout conversion fell from a baseline of 0.0964 to 0.0959 last week, representing a relative drop of -0.5 percent. The primary driver behind this downturn was the collapse in the east web wallet t3 segment.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 4.3,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=south/android/wallet/t1  conf 0.95",
+    "c": 0.02757
+   },
+   {
+    "t": 5.42,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=east/web/wallet/t3  conf 0.95",
+    "c": 0.03502
+   },
+   {
+    "t": 5.42,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=ncr/ios/wallet/t5  conf 0.45",
+    "c": 0.01373
+   },
+   {
+    "t": 5.42,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.02089
+   },
+   {
+    "t": 7.65,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=pune/ios/emi/t2  conf 0.95",
+    "c": 0.00685
+   },
+   {
+    "t": 7.65,
+    "a": "super",
+    "b": "scout5",
+    "s": "supervisor scout5 flagged  these numbers are not in your slice: -12.16.",
+    "c": 0.0
+   },
+   {
+    "t": 7.65,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     retry  cause=unclear  conf 0.00",
+    "c": 0.03629
+   },
+   {
+    "t": 8.4,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.05125
+   },
+   {
+    "t": 8.4,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  1 retried",
+    "c": 0.0
+   },
+   {
+    "t": 8.4,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 8.4,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       by evidence  top = east/web/wallet/t3  {\"south/android/wallet/t1\": 0.13, \"east/web/wallet/t3\": 0.45, \"ncr/ios/wallet/t5\": 0.124}",
+    "c": 0.0
+   },
+   {
+    "t": 8.4,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 11.46,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=east/web/wallet/t3",
+    "c": 0.00035
+   },
+   {
+    "t": 11.46,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 11.46,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=east/web/wallet/t3",
+    "c": 0.0
+   }
+  ]
+ }
+}

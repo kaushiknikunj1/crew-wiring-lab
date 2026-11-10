@@ -1,0 +1,214 @@
+{
+ "seed": 10,
+ "truth": "kolkata/web/card",
+ "wiring": "supervised",
+ "answer": "kolkata/web/card",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 10816,
+ "output_tokens": 1968,
+ "cost_usd": 0.01549,
+ "seconds": 9.7,
+ "headline": {
+  "baseline_conversion": 0.0963,
+  "last_week_conversion": 0.0956,
+  "relative_change_pct": -0.7
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "kolkata/web/card",
+  "votes": {
+   "kolkata/web/card": 0.99
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice experienced a collapse in success rate; the largest decline was south/mweb/emi from 0.7012 to 0.6949."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice experienced a collapse in success rate; the largest drop was west/mweb/upi from 0.9072 to 0.8993."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": "No single segment collapsed; ncr/ios/upi saw the largest drop from 0.9052 to 0.7989 (~11.7%), closely followed by ncr/ios/wallet (0.9482 to 0.8490), indicating the"
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout6": {
+    "cause": "kolkata/web/card",
+    "confidence": 0.99,
+    "note": "kolkata/web/card success rate collapsed from 0.8253 to 0.4539 while all other segments in this slice remained relatively stable."
+   }
+  },
+  "retries": 0,
+  "text": "The primary segment responsible for the decline was card payments on the web in Kolkata. Its collapse drove the blended checkout conversion down from 0.0963 to 0.0956, representing a relative drop of -0.7 percent.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 4.94,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.0123
+   },
+   {
+    "t": 4.94,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00214
+   },
+   {
+    "t": 5.24,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.01518
+   },
+   {
+    "t": 5.24,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.0099
+   },
+   {
+    "t": 5.24,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.00697
+   },
+   {
+    "t": 5.24,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=kolkata/web/card  conf 0.99",
+    "c": 0.00407
+   },
+   {
+    "t": 5.24,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 5.24,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 5.24,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = kolkata/web/card  weights {\"kolkata/web/card\": 0.99}",
+    "c": 0.0
+   },
+   {
+    "t": 5.24,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 9.66,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=kolkata/web/card",
+    "c": 0.00031
+   },
+   {
+    "t": 9.66,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 9.66,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=kolkata/web/card",
+    "c": 0.0
+   }
+  ]
+ }
+}

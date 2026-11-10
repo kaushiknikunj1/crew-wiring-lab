@@ -1,28 +1,12 @@
 {
  "summary": {
-  "solo": {
-   "runs": 12,
-   "accuracy": 1.0,
-   "calls_per_run": 1,
-   "tokens_per_run": 3027,
-   "cost_per_run_usd": 0.00269,
-   "seconds_per_run": 3.8
-  },
-  "flat": {
-   "runs": 12,
-   "accuracy": 1.0,
-   "calls_per_run": 7,
-   "tokens_per_run": 6047,
-   "cost_per_run_usd": 0.00816,
-   "seconds_per_run": 30.9
-  },
   "supervised": {
    "runs": 12,
    "accuracy": 1.0,
-   "calls_per_run": 7.1,
-   "tokens_per_run": 5524,
-   "cost_per_run_usd": 0.00826,
-   "seconds_per_run": 30.1
+   "calls_per_run": 7,
+   "tokens_per_run": 5409,
+   "cost_per_run_usd": 0.00795,
+   "seconds_per_run": 9.0
   }
  },
  "rows": [
@@ -57,10 +41,10 @@
    "answer": "checkout_latency_android",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4074,
-   "output_tokens": 1134,
-   "cost_usd": 0.00731,
-   "seconds": 29.4
+   "input_tokens": 4105,
+   "output_tokens": 1572,
+   "cost_usd": 0.00897,
+   "seconds": 10.0
   },
   {
    "seed": 2,
@@ -93,10 +77,10 @@
    "answer": "card_bin_block",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4063,
-   "output_tokens": 1046,
-   "cost_usd": 0.00697,
-   "seconds": 26.6
+   "input_tokens": 4094,
+   "output_tokens": 991,
+   "cost_usd": 0.00679,
+   "seconds": 7.3
   },
   {
    "seed": 3,
@@ -129,10 +113,10 @@
    "answer": "checkout_latency_android",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4075,
-   "output_tokens": 1503,
-   "cost_usd": 0.00869,
-   "seconds": 29.8
+   "input_tokens": 4106,
+   "output_tokens": 1305,
+   "cost_usd": 0.00797,
+   "seconds": 8.4
   },
   {
    "seed": 4,
@@ -165,10 +149,10 @@
    "answer": "checkout_latency_android",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4075,
-   "output_tokens": 1451,
-   "cost_usd": 0.0085,
-   "seconds": 28.5
+   "input_tokens": 4106,
+   "output_tokens": 1039,
+   "cost_usd": 0.00698,
+   "seconds": 8.3
   },
   {
    "seed": 5,
@@ -201,10 +185,10 @@
    "answer": "pricing_change",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4083,
-   "output_tokens": 1219,
-   "cost_usd": 0.00763,
-   "seconds": 29.9
+   "input_tokens": 4114,
+   "output_tokens": 1181,
+   "cost_usd": 0.00751,
+   "seconds": 6.8
   },
   {
    "seed": 6,
@@ -237,10 +221,10 @@
    "answer": "pricing_change",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4081,
-   "output_tokens": 1635,
-   "cost_usd": 0.00919,
-   "seconds": 31.7
+   "input_tokens": 4112,
+   "output_tokens": 801,
+   "cost_usd": 0.00609,
+   "seconds": 7.2
   },
   {
    "seed": 7,
@@ -273,10 +257,10 @@
    "answer": "ios_release_bug",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4065,
-   "output_tokens": 1585,
-   "cost_usd": 0.00899,
-   "seconds": 31.8
+   "input_tokens": 4096,
+   "output_tokens": 1747,
+   "cost_usd": 0.00962,
+   "seconds": 15.0
   },
   {
    "seed": 8,
@@ -309,10 +293,10 @@
    "answer": "checkout_latency_android",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4079,
-   "output_tokens": 1548,
-   "cost_usd": 0.00886,
-   "seconds": 28.4
+   "input_tokens": 4109,
+   "output_tokens": 1536,
+   "cost_usd": 0.00884,
+   "seconds": 9.0
   },
   {
    "seed": 9,
@@ -345,10 +329,10 @@
    "answer": "paid_traffic_mix",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4141,
-   "output_tokens": 1276,
-   "cost_usd": 0.00789,
-   "seconds": 34.3
+   "input_tokens": 4140,
+   "output_tokens": 1559,
+   "cost_usd": 0.00895,
+   "seconds": 9.6
   },
   {
    "seed": 10,
@@ -380,11 +364,11 @@
    "wiring": "supervised",
    "answer": "pricing_change",
    "correct": true,
-   "calls": 8,
-   "input_tokens": 4810,
-   "output_tokens": 1378,
-   "cost_usd": 0.00877,
-   "seconds": 30.7
+   "calls": 7,
+   "input_tokens": 4109,
+   "output_tokens": 1445,
+   "cost_usd": 0.0085,
+   "seconds": 8.3
   },
   {
    "seed": 11,
@@ -417,10 +401,10 @@
    "answer": "paid_traffic_mix",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4127,
-   "output_tokens": 1471,
-   "cost_usd": 0.00861,
-   "seconds": 32.5
+   "input_tokens": 4116,
+   "output_tokens": 948,
+   "cost_usd": 0.00664,
+   "seconds": 8.7
   },
   {
    "seed": 12,
@@ -453,18 +437,18 @@
    "answer": "paid_traffic_mix",
    "correct": true,
    "calls": 7,
-   "input_tokens": 4134,
-   "output_tokens": 1237,
-   "cost_usd": 0.00774,
-   "seconds": 27.0
+   "input_tokens": 4133,
+   "output_tokens": 1442,
+   "cost_usd": 0.00851,
+   "seconds": 8.9
   }
  ],
  "total": {
-  "calls": 45,
-  "input_tokens": 35303,
-  "output_tokens": 2764,
-  "thinking_tokens": 6816,
-  "cost_usd": 0.0624,
+  "calls": 84,
+  "input_tokens": 49340,
+  "output_tokens": 5239,
+  "thinking_tokens": 10327,
+  "cost_usd": 0.0954,
   "provider": "gemini",
   "model": "gemini-3.8-flash",
   "thinking": 0

@@ -1,0 +1,248 @@
+{
+ "seed": 4,
+ "truth": "ncr/web/emi/t2",
+ "wiring": "flat",
+ "answer": "ncr/web/emi/t2",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 52686,
+ "output_tokens": 2127,
+ "cost_usd": 0.04749,
+ "seconds": 30.2,
+ "headline": {
+  "baseline_conversion": 0.0957,
+  "last_week_conversion": 0.0954,
+  "relative_change_pct": -0.4
+ },
+ "result": {
+  "wiring": "flat",
+  "answer": "ncr/web/emi/t2",
+  "votes": {
+   "ncr/web/emi/t2": 2.0
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout3": {
+    "cause": "ncr/web/emi/t2",
+    "confidence": 0.95,
+    "note": "Success rate for ncr/web/emi/t2 collapsed by 45.0% from"
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "Largest drop in this slice is bengaluru/android/netbanking/t2 from 0.7956 to 0.6889, but teammate found a 45% collapse elsewhere."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout6": {
+    "cause": "ncr/web/emi/t2",
+    "confidence": 0.95,
+    "note": "Teammate identified a 45.0% collapse in ncr/web/emi/t2, whereas the largest drop in this slice is chennai/web/card/t1 falling only 11.1% from 0.8560 to 0.7609."
+   }
+  },
+  "text": "Blended checkout conversion fell from 0.0957 to 0.0954 last week, representing a relative drop of -0.4 percent. The single segment driving most of this decline was tier-2 web users in the National Capital Region paying via equated monthly installments.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  sequential  shared drafts ON",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "scout1",
+    "b": "bus",
+    "s": "scout1     reads bus  0 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 5.57,
+    "a": "scout1",
+    "b": "merge",
+    "s": "scout1     returned  cause=unclear  conf 0.00",
+    "c": 0.00796
+   },
+   {
+    "t": 5.57,
+    "a": "scout2",
+    "b": "bus",
+    "s": "scout2     reads bus  1 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 10.49,
+    "a": "scout2",
+    "b": "merge",
+    "s": "scout2     returned  cause=unclear  conf 0.00",
+    "c": 0.00798
+   },
+   {
+    "t": 10.49,
+    "a": "scout3",
+    "b": "bus",
+    "s": "scout3     reads bus  2 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 15.37,
+    "a": "scout3",
+    "b": "merge",
+    "s": "scout3     returned  cause=ncr/web/emi/t2  conf 0.95",
+    "c": 0.00805
+   },
+   {
+    "t": 15.37,
+    "a": "scout4",
+    "b": "bus",
+    "s": "scout4     reads bus  3 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 19.71,
+    "a": "scout4",
+    "b": "merge",
+    "s": "scout4     returned  cause=unclear  conf 0.10",
+    "c": 0.0079
+   },
+   {
+    "t": 19.71,
+    "a": "scout5",
+    "b": "bus",
+    "s": "scout5     reads bus  4 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 24.25,
+    "a": "scout5",
+    "b": "merge",
+    "s": "scout5     returned  cause=unclear  conf 0.00",
+    "c": 0.00823
+   },
+   {
+    "t": 24.25,
+    "a": "scout6",
+    "b": "bus",
+    "s": "scout6     reads bus  5 teammate drafts visible",
+    "c": 0.0
+   },
+   {
+    "t": 26.87,
+    "a": "scout6",
+    "b": "merge",
+    "s": "scout6     returned  cause=ncr/web/emi/t2  conf 0.95",
+    "c": 0.00703
+   },
+   {
+    "t": 26.87,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  votes {\"ncr/web/emi/t2\": 2.0}",
+    "c": 0.0
+   },
+   {
+    "t": 26.87,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = ncr/web/emi/t2",
+    "c": 0.0
+   },
+   {
+    "t": 26.87,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       no check in this wiring",
+    "c": 0.0
+   },
+   {
+    "t": 30.15,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=ncr/web/emi/t2",
+    "c": 0.00034
+   },
+   {
+    "t": 30.15,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     skipped",
+    "c": 0.0
+   },
+   {
+    "t": 30.15,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=ncr/web/emi/t2",
+    "c": 0.0
+   }
+  ]
+ }
+}

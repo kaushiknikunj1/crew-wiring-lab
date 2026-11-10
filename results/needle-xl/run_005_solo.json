@@ -1,0 +1,53 @@
+{
+ "seed": 5,
+ "truth": "chennai/mweb/netbanking/t5",
+ "wiring": "solo",
+ "answer": "chennai/mweb/netbanking/t5",
+ "correct": true,
+ "calls": 1,
+ "input_tokens": 51121,
+ "output_tokens": 516,
+ "cost_usd": 0.04028,
+ "seconds": 6.8,
+ "headline": {
+  "baseline_conversion": 0.0947,
+  "last_week_conversion": 0.0943,
+  "relative_change_pct": -0.4
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "chennai/mweb/netbanking/t5",
+  "confidence": 1.0,
+  "note": "The success rate for chennai/mweb/netbanking/t5 collapsed from 0.7596 to 0.417",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 6.77,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=chennai/mweb/netbanking/t5  conf 1.00",
+    "c": 0.04028
+   },
+   {
+    "t": 6.81,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 6.81,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=chennai/mweb/netbanking/t5",
+    "c": 0.0
+   }
+  ]
+ }
+}

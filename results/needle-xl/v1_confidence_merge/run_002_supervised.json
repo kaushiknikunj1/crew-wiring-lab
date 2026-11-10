@@ -1,0 +1,215 @@
+{
+ "seed": 2,
+ "truth": "west/mweb/card/t2",
+ "wiring": "supervised",
+ "answer": "west/mweb/card/t2",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 52288,
+ "output_tokens": 2067,
+ "cost_usd": 0.04697,
+ "seconds": 8.8,
+ "headline": {
+  "baseline_conversion": 0.0966,
+  "last_week_conversion": 0.0961,
+  "relative_change_pct": -0.5
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "west/mweb/card/t2",
+  "votes": {
+   "south/mweb/upi/t4": 0.95,
+   "west/mweb/card/t2": 0.99
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "south/mweb/upi/t4",
+    "confidence": 0.95,
+    "note": "south/mweb/upi/t4 saw payment success rate fall 13.9% from 0.9163 to 0.7886 with 1,198 sessions per day, the largest relative drop in this slice."
+   },
+   "scout2": {
+    "cause": "west/mweb/card/t2",
+    "confidence": 0.99,
+    "note": "Success rate for west/mweb/card/t2 collapsed from 0.8301 to 0.4566 while checkout rate remained stable at ~0.111."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.0,
+    "note": ""
+   },
+   "scout6": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   }
+  },
+  "retries": 0,
+  "text": "Blended checkout conversion fell by 0.5% last week, dropping from a baseline of 0.0966 to 0.0961. The single segment driving most of this decline was tier-2 mobile web card transactions in the west region.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-200 of 1200 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 201-400 of 1200 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 401-600 of 1200 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 601-800 of 1200 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 801-1000 of 1200 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 1001-1200 of 1200 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 3.12,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=south/mweb/upi/t4  conf 0.95",
+    "c": 0.00673
+   },
+   {
+    "t": 4.04,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=west/mweb/card/t2  conf 0.99",
+    "c": 0.01411
+   },
+   {
+    "t": 5.93,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.04663
+   },
+   {
+    "t": 5.93,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.03048
+   },
+   {
+    "t": 5.93,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.03858
+   },
+   {
+    "t": 5.93,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.02221
+   },
+   {
+    "t": 5.93,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 5.93,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 5.93,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       top = west/mweb/card/t2  weights {\"south/mweb/upi/t4\": 0.95, \"west/mweb/card/t2\": 0.99}",
+    "c": 0.0
+   },
+   {
+    "t": 5.93,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 8.81,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=west/mweb/card/t2",
+    "c": 0.00034
+   },
+   {
+    "t": 8.81,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 8.81,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=west/mweb/card/t2",
+    "c": 0.0
+   }
+  ]
+ }
+}

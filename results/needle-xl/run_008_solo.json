@@ -1,0 +1,53 @@
+{
+ "seed": 8,
+ "truth": "bengaluru/mweb/card/t1",
+ "wiring": "solo",
+ "answer": "unclear",
+ "correct": false,
+ "calls": 1,
+ "input_tokens": 51154,
+ "output_tokens": 516,
+ "cost_usd": 0.0403,
+ "seconds": 6.9,
+ "headline": {
+  "baseline_conversion": 0.0961,
+  "last_week_conversion": 0.0957,
+  "relative_change_pct": -0.4
+ },
+ "result": {
+  "wiring": "solo",
+  "answer": "unclear",
+  "confidence": 0.0,
+  "note": "",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "agent",
+    "s": "agent      reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 6.85,
+    "a": "agent",
+    "b": "writer",
+    "s": "agent      answer  cause=unclear  conf 0.00",
+    "c": 0.0403
+   },
+   {
+    "t": 6.89,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 6.89,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=unclear",
+    "c": 0.0
+   }
+  ]
+ }
+}

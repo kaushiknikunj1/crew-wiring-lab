@@ -1,0 +1,214 @@
+{
+ "seed": 6,
+ "truth": "kolkata/android/netbanking",
+ "wiring": "supervised",
+ "answer": "kolkata/android/netbanking",
+ "correct": true,
+ "calls": 7,
+ "input_tokens": 10844,
+ "output_tokens": 2005,
+ "cost_usd": 0.01565,
+ "seconds": 9.3,
+ "headline": {
+  "baseline_conversion": 0.0971,
+  "last_week_conversion": 0.0966,
+  "relative_change_pct": -0.6
+ },
+ "result": {
+  "wiring": "supervised",
+  "answer": "kolkata/android/netbanking",
+  "votes": {
+   "kolkata/android/netbanking": 0.45
+  },
+  "drafts": {
+   "scout1": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "No segment in this slice experienced a collapse in payment success rate; all relative changes were under 1%."
+   },
+   "scout2": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice show stable payment success rates within ~1% of baseline, with no collapsed segment present."
+   },
+   "scout3": {
+    "cause": "unclear",
+    "confidence": 0.3,
+    "note": ""
+   },
+   "scout4": {
+    "cause": "unclear",
+    "confidence": 0.1,
+    "note": "All segments in this slice have stable payment success rates within +/-1% of base (e.g., bengaluru/ios/wallet shifted from 0.9545 to 0.9475), indicating the collapsed segment is elsewhere."
+   },
+   "scout5": {
+    "cause": "unclear",
+    "confidence": 0.2,
+    "note": ""
+   },
+   "scout6": {
+    "cause": "kolkata/android/netbanking",
+    "confidence": 0.95,
+    "note": "kolkata/android/netbanking success_rate collapsed from 0.7868 to 0.4327 (a ~45% relative drop), whereas other segments had minimal changes."
+   }
+  },
+  "retries": 0,
+  "text": "The single segment responsible for the collapse in payment success rate is Kolkata users on Android paying via netbanking. This issue drove blended checkout conversion down by a relative 0.6 percent last week, dropping from a baseline of 0.0971 to 0.0966.",
+  "trace": [
+   {
+    "t": 0.0,
+    "a": "bus",
+    "b": "planner",
+    "s": "planner    reads bus  6 slices",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "planner",
+    "b": "decompose",
+    "s": "decompose  6 sub-questions",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "decompose",
+    "b": "route",
+    "s": "route      6 scouts  parallel  isolated",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout1",
+    "s": "dispatch   scout1  segments 1-40 of 240 (north \u2026 south)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout2",
+    "s": "dispatch   scout2  segments 41-80 of 240 (east \u2026 west)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout3",
+    "s": "dispatch   scout3  segments 81-120 of 240 (central \u2026 ncr)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout4",
+    "s": "dispatch   scout4  segments 121-160 of 240 (mumbai \u2026 bengaluru)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout5",
+    "s": "dispatch   scout5  segments 161-200 of 240 (hyderabad \u2026 pune)",
+    "c": 0.0
+   },
+   {
+    "t": 0.0,
+    "a": "route",
+    "b": "scout6",
+    "s": "dispatch   scout6  segments 201-240 of 240 (kolkata \u2026 chennai)",
+    "c": 0.0
+   },
+   {
+    "t": 3.83,
+    "a": "scout1",
+    "b": "super",
+    "s": "scout1     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00683
+   },
+   {
+    "t": 3.83,
+    "a": "scout2",
+    "b": "super",
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00444
+   },
+   {
+    "t": 5.22,
+    "a": "scout3",
+    "b": "super",
+    "s": "scout3     returned  slice only  cause=unclear  conf 0.30",
+    "c": 0.01241
+   },
+   {
+    "t": 5.22,
+    "a": "scout4",
+    "b": "super",
+    "s": "scout4     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.00952
+   },
+   {
+    "t": 5.53,
+    "a": "scout5",
+    "b": "super",
+    "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
+    "c": 0.01531
+   },
+   {
+    "t": 5.53,
+    "a": "scout6",
+    "b": "super",
+    "s": "scout6     returned  slice only  cause=kolkata/android/netbanking  conf 0.95",
+    "c": 0.00233
+   },
+   {
+    "t": 5.53,
+    "a": "super",
+    "b": "merge",
+    "s": "supervisor 6 checked  0 retried",
+    "c": 0.0
+   },
+   {
+    "t": 5.53,
+    "a": "merge",
+    "b": "dedupe",
+    "s": "merge      6 drafts  independent",
+    "c": 0.0
+   },
+   {
+    "t": 5.53,
+    "a": "dedupe",
+    "b": "rank",
+    "s": "rank       by evidence  top = kolkata/android/netbanking  {\"kolkata/android/netbanking\": 0.45}",
+    "c": 0.0
+   },
+   {
+    "t": 5.53,
+    "a": "rank",
+    "b": "cite",
+    "s": "cite       every kept draft is pinned to its slice",
+    "c": 0.0
+   },
+   {
+    "t": 9.26,
+    "a": "cite",
+    "b": "writer",
+    "s": "writer     draft  cause=kolkata/android/netbanking",
+    "c": 0.00034
+   },
+   {
+    "t": 9.26,
+    "a": "writer",
+    "b": "verify",
+    "s": "verify     numbers pinned  ok",
+    "c": 0.0
+   },
+   {
+    "t": 9.26,
+    "a": "verify",
+    "b": "bus",
+    "s": "done       cause=kolkata/android/netbanking",
+    "c": 0.0
+   }
+  ]
+ }
+}

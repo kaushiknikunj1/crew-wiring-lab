@@ -5,10 +5,10 @@
  "answer": "ios_release_bug",
  "correct": true,
  "calls": 7,
- "input_tokens": 4065,
- "output_tokens": 1585,
- "cost_usd": 0.00899,
- "seconds": 31.8,
+ "input_tokens": 4096,
+ "output_tokens": 1747,
+ "cost_usd": 0.00962,
+ "seconds": 15.0,
  "headline": {
   "baseline_conversion": 0.0682,
   "last_week_conversion": 0.0621,
@@ -18,42 +18,42 @@
   "wiring": "supervised",
   "answer": "ios_release_bug",
   "votes": {
-   "ios_release_bug": 0.95
+   "ios_release_bug": 1.25
   },
   "drafts": {
    "scout1": {
     "cause": "ios_release_bug",
     "confidence": 0.95,
-    "note": "iOS payment attempt rate fell sharply by 32.6% (from 0.7347 to 0.4949) while Android and web attempt rates held flat."
+    "note": "iOS payment attempt rate fell 32.6% from 0.7347 to 0.4949 while Android and web attempt rates remained steady."
    },
    "scout2": {
     "cause": "unclear",
-    "confidence": 0.4,
-    "note": "Payment attempt rate dropped uniformly across all payment methods by ~8.7% to 9.0% while checkout and success rates remained flat, indicating an issue upstream of payment methods like an OS"
+    "confidence": 0.0,
+    "note": ""
    },
    "scout3": {
     "cause": "unclear",
     "confidence": 0.4,
-    "note": "Payment attempt rate dropped by ~8.8% to 9.1% across all traffic sources while checkout and success rates stayed flat, which points to an attempt-stage issue but cannot isolate whether it is specific to iOS."
+    "note": "Payment attempt rate dropped by around 8.8% to 9.1% across all traffic sources while checkout and success rates remained largely flat, but platform breakdown is missing to confirm an OS-specific bug."
    },
    "scout4": {
-    "cause": "unclear",
-    "confidence": 0.0,
+    "cause": "ios_release_bug",
+    "confidence": 0.3,
     "note": ""
    },
    "scout5": {
     "cause": "unclear",
     "confidence": 0.2,
-    "note": "Blended conversion dropped from 0.0686 on day 21 to 0.0625 on day 22, but aggregate daily data alone cannot distinguish between segment-specific causes."
+    "note": "Blended conversion fell from ~0.0686 on day 21 to ~0.0614-0.0626 during days 22-28, but aggregate data cannot distinguish between platform, channel, or payment method causes."
    },
    "scout6": {
     "cause": "unclear",
-    "confidence": 0.2,
-    "note": "Overall checkout conversion dropped 8.9% from 0.0682 to 0.0621, but aggregate headline data cannot isolate the specific segment or root cause."
+    "confidence": 0.1,
+    "note": "Overall conversion dropped 8.9% from 0.0682 to 0.0621, but aggregate headline data alone cannot determine the specific segment or funnel step causing the decline."
    }
   },
   "retries": 0,
-  "text": "Conversion fell last week due to a bug in the recent iOS release. This issue caused baseline conversion to drop from 0.0682 to 0.0621, representing a -8.9 relative change percentage.",
+  "text": "Blended checkout conversion fell last week due to an iOS release bug. This caused conversion to drop by -8.9% relative to expectations, moving from a baseline of 0.0682 down to 0.0621.",
   "trace": [
    {
     "t": 0.0,
@@ -73,7 +73,7 @@
     "t": 0.0,
     "a": "decompose",
     "b": "route",
-    "s": "route      6 scouts  isolated",
+    "s": "route      6 scouts  parallel  isolated",
     "c": 0.0
    },
    {
@@ -119,91 +119,91 @@
     "c": 0.0
    },
    {
-    "t": 2.66,
+    "t": 3.11,
     "a": "scout1",
     "b": "super",
     "s": "scout1     returned  slice only  cause=ios_release_bug  conf 0.95",
-    "c": 0.00083
+    "c": 0.00082
    },
    {
-    "t": 9.41,
+    "t": 12.65,
     "a": "scout2",
     "b": "super",
-    "s": "scout2     returned  slice only  cause=unclear  conf 0.40",
-    "c": 0.0023
+    "s": "scout2     returned  slice only  cause=unclear  conf 0.00",
+    "c": 0.00934
    },
    {
-    "t": 14.49,
+    "t": 12.65,
     "a": "scout3",
     "b": "super",
     "s": "scout3     returned  slice only  cause=unclear  conf 0.40",
-    "c": 0.00202
+    "c": 0.00517
    },
    {
-    "t": 20.64,
+    "t": 12.65,
     "a": "scout4",
     "b": "super",
-    "s": "scout4     returned  slice only  cause=unclear  conf 0.00",
-    "c": 0.00187
+    "s": "scout4     returned  slice only  cause=ios_release_bug  conf 0.30",
+    "c": 0.00704
    },
    {
-    "t": 24.86,
+    "t": 12.65,
     "a": "scout5",
     "b": "super",
     "s": "scout5     returned  slice only  cause=unclear  conf 0.20",
-    "c": 0.00101
+    "c": 0.00216
    },
    {
-    "t": 27.85,
+    "t": 12.65,
     "a": "scout6",
     "b": "super",
-    "s": "scout6     returned  slice only  cause=unclear  conf 0.20",
-    "c": 0.00069
+    "s": "scout6     returned  slice only  cause=unclear  conf 0.10",
+    "c": 0.0032
    },
    {
-    "t": 27.85,
+    "t": 12.65,
     "a": "super",
     "b": "merge",
     "s": "supervisor 6 checked  0 retried",
     "c": 0.0
    },
    {
-    "t": 27.85,
+    "t": 12.65,
     "a": "merge",
     "b": "dedupe",
     "s": "merge      6 drafts  independent",
     "c": 0.0
    },
    {
-    "t": 27.85,
+    "t": 12.65,
     "a": "dedupe",
     "b": "rank",
-    "s": "rank       top = ios_release_bug  weights {\"ios_release_bug\": 0.95}",
+    "s": "rank       top = ios_release_bug  weights {\"ios_release_bug\": 1.25}",
     "c": 0.0
    },
    {
-    "t": 27.85,
+    "t": 12.65,
     "a": "rank",
     "b": "cite",
     "s": "cite       every kept draft is pinned to its slice",
     "c": 0.0
    },
    {
-    "t": 31.76,
+    "t": 15.03,
     "a": "cite",
     "b": "writer",
     "s": "writer     draft  cause=ios_release_bug",
-    "c": 0.00027
+    "c": 0.00028
    },
    {
-    "t": 31.76,
+    "t": 15.03,
     "a": "writer",
     "b": "verify",
     "s": "verify     numbers pinned  ok",
     "c": 0.0
    },
    {
-    "t": 31.76,
+    "t": 15.03,
     "a": "verify",
     "b": "bus",
     "s": "done       cause=ios_release_bug",
